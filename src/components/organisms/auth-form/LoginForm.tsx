@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import axios, { AxiosResponse } from 'axios'
-import { TwitterLoginButton, GoogleLoginButton, GithubLoginButton } from "react-social-login-buttons";
+import { axios } from '../../../modules/axios'
+import { AxiosResponse } from 'axios'
+import { TwitterLoginButton, GoogleLoginButton, GithubLoginButton } from "react-social-login-buttons"
+import { setItem } from '../../../function/storage'
+import { userKey } from '../../../const/key'
 
 interface Props {
 }
@@ -12,20 +15,23 @@ const LoginForm: React.FC<Props> = (props) => {
     Name: string
     AvatorURL: string
   }
-  const login = () => {
+  const login = (service: string) => {
     axios
-      .post('http://localhost:8080/auth/github/auth')
-      .then((response: AxiosResponse<Callback>) => {
-        
+      .post('/oauth',{
+        service: service,
       })
-      .catch(
-      )
+      .then((res: AxiosResponse<Callback>) => {
+        setItem(userKey, res.data)
+      })
+      .catch(() => {
+        console.log("can't get user")
+      })
   }
   return(
     <Wrapper>
       <TwitterLoginButton align="center"/>
       <GoogleLoginButton align="center"/>
-      <GithubLoginButton align="center"/>
+      <GithubLoginButton onClick={() => login("github")} align="center"/>
     </Wrapper>
   )
 }

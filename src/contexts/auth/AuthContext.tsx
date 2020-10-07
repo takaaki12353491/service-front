@@ -1,5 +1,5 @@
 import React from 'react'
-import { getItem } from '../../function/Storage'
+import { getItem } from '../../function/storage'
 import { userKey } from '../../const/key'
 
 export interface User {
