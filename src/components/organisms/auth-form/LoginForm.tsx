@@ -15,10 +15,9 @@ const LoginForm: React.FC<Props> = (props) => {
     Name: string
     AvatorURL: string
   }
-  const login = (service: string) => {
-    axios
-      .post('/oauth',{
-        service: service,
+  const login = async (service: string) => {
+    await axios
+      .get(`/oauth?service=${service}`,{
       })
       .then((res: AxiosResponse<Callback>) => {
         setItem(userKey, res.data)
