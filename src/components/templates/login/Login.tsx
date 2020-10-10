@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Typography, Link } from '@material-ui/core'
-import LoginForm from '../../organisms/auth-form/LoginForm'
+import LoginForm from '../../organisms/login-form/LoginForm'
 
 interface Props {
 }
