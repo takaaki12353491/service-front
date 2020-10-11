@@ -6,30 +6,31 @@ import { NavLinkProps, NavLinkContext } from '../../molecules/auth/nav-links/Nav
 interface Props {
 }
 
-const Login: React.FC<Props> = (props) => {
+const Signup: React.FC<Props> = (props) => {
   const formValue: FormProps = {
-    action: '/login',
+    action: '/signup',
     method: 'post',
     button: {
-      text: 'Login'
+      text: 'Signup'
     },
     textFields: [
       { name: 'name', label: 'name', },
+      { name: 'email', label: 'email', },
       { name: 'password', label: 'password', },
     ]
   }
   const navLinkValue: NavLinkProps = {
     items: [
       { href:'/', text:'Home' },
-      { href:'/signup', text:'Signup' },
+      { href:'/login', text:'Login' },
     ]
   }
   return(
     <FormContext.Provider value={formValue}>
       <NavLinkContext.Provider value={navLinkValue}>
-        <Auth title='Login'/>
+        <Auth title='Sign Up'/>
       </NavLinkContext.Provider>
     </FormContext.Provider>
   )
 }
-export default Login
+export default Signup

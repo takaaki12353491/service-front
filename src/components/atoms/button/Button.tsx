@@ -1,32 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Button as MButton, ButtonProps as MButtonProps } from '@material-ui/core'
 
-interface Props {
-  onClick?: () => any;
-  onMouseEnter?: () => any;
-  onMouseLeave?: () => any;
-  activeStyle?: object;
-  className?: string;
-  icon?: string | React.Component | Function;
-  iconFormat?: (iconName: string) => string;
-  iconSize?: string;
-  iconColor?: string;
-  preventActiveStyles?: Boolean;
-  style?: object;
-  align?: "left" | "center" | "right";
-  text?: string;
+export interface ButtonProps extends MButtonProps {
+  text?: string
 }
 
-const Button: React.FC<Props> = (props) => {
-  return(
-    <Wrapper>
-      props.text
-    </Wrapper>
+export const ButtonContext = React.createContext<ButtonProps>({})
+
+const Button: React.FC<ButtonProps> = (props) => {
+  const value = React.useContext(ButtonContext)
+  return (
+    <MButton {...value} {...props}>
+      {props.text ? props.text : value.text}
+    </MButton>
   )
 }
 export default Button
-
-const Wrapper = styled.button`
-  text-align: center;
-  border: 1px;
-`;

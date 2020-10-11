@@ -1,2 +1,1 @@
-const domain = 'http://localhost:8080'
-export const github = `${domain}/auth/github/auth`
+export const domain = 'http://localhost:8080'
