@@ -3,13 +3,8 @@ import Auth from '../../organisms/auth/Auth'
 import { FormContext, FormProps } from '../../molecules/form/Form'
 import { NavLinkProps, NavLinkContext } from '../../molecules/auth/nav-links/NavLinks'
 
-interface Props {
-}
-
-const Login: React.FC<Props> = (props) => {
+const Login = () => {
   const formValue: FormProps = {
-    action: '/login',
-    method: 'post',
     button: {
       text: 'Login'
     },

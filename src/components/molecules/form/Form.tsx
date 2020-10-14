@@ -4,8 +4,7 @@ import { TextField, TextFieldProps } from '@material-ui/core'
 import Button, { ButtonProps } from '../../atoms/button/Button'
 
 export interface FormProps {
-  action?: string
-  method?: string
+  submit?: () => {}
   button?: ButtonProps
   textFields?: TextFieldProps[]
 }
@@ -17,14 +16,13 @@ const Form: React.FC = () => {
   const value = React.useContext(FormContext)
   const list = []
   const items = value.textFields ? value.textFields : []
-  console.log(items.length)
   for (const item of items) {
     list.push(
       <TextField {...item} key={item.name} className={classes.textField} variant='outlined'/>
     )
   }
   return (
-    <form className={classes.form} action={value.action} method={value.method}>
+    <form className={classes.form} onSubmit={value.submit}>
       {list}
       <Button {...value.button} className={classes.submitButton} type='submit' variant='contained' color='primary'/>
     </form>
