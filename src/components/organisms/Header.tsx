@@ -2,8 +2,8 @@ import React from 'react'
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { AppBar, Toolbar, IconButton, Typography, InputBase, Button } from '@material-ui/core'
 import { Menu, Search } from '@material-ui/icons'
-import { AuthContext } from '../../../contexts/auth/AuthContext'
-import UserMenu from '../../molecules/header/user-menu/UserMenu'
+import { AuthContext } from '../../contexts/AuthContext'
+import UserMenu from '../molecules/UserMenu'
 
 interface Props {}
 

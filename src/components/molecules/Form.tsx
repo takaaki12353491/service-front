@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { TextField, TextFieldProps } from '@material-ui/core'
-import Button, { ButtonProps } from '../../atoms/button/Button'
+import Button, { ButtonProps } from '../atoms/Button'
 
 export interface FormProps {
   submit?: () => {}

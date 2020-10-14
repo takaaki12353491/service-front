@@ -1,8 +1,8 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import Form from '../../molecules/form/Form'
-import NavLinks from '../../molecules/auth/nav-links/NavLinks'
+import Form from '../molecules/Form'
+import NavLinks from '../molecules/Navigation'
 
 interface Props {
   title?: string

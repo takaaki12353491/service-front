@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { AuthProvider } from './contexts/auth/AuthContext'
-import Home from './components/pages/home/Home'
-import Login from './components/pages/login/Login'
-import Signup from './components/pages/signup/Signup'
-import Profile from './components/pages/profile/Profile'
+import { AuthProvider } from './contexts/AuthContext'
+import Home from './components/pages/Home'
+import Login from './components/pages/Login'
+import Signup from './components/pages/Signup'
+import Profile from './components/pages/Profile'
 
 function App() {
   return (

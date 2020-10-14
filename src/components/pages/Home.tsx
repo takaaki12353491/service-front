@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Header from '../../organisms/header/Header'
+import Header from '../organisms/Header'
 
 interface Props {
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
-import Link, { LinkProps } from '../../../atoms/link/Link'
+import Link, { LinkProps } from '../atoms/Link'
 
 export interface NavLinkProps {
   items?: LinkProps[]

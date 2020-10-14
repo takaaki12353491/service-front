@@ -1,6 +1,6 @@
 import React from 'react'
-import { getItem } from '../../function/storage'
-import { userKey } from '../../const/key'
+import { getItem } from '../functions/storage'
+import { userKey } from '../consts/key'
 
 export interface User {
   id: number

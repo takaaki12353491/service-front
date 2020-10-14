@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
-import Auth from '../../organisms/auth/Auth'
-import { FormContext, FormProps } from '../../molecules/form/Form'
-import { NavLinkProps, NavLinkContext } from '../../molecules/auth/nav-links/NavLinks'
-import { axios } from '../../../modules/axios'
+import Auth from '../organisms/Auth'
+import { FormContext, FormProps } from '../molecules/Form'
+import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
+import { axios } from '../../modules/axios'
 
 const Login = () => {
   type Response = {
