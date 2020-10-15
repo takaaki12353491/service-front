@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import Home from './components/pages/Home'
@@ -8,6 +9,12 @@ import Signup from './components/pages/Signup'
 import Profile from './components/pages/Profile'
 
 function App() {
+  axios.defaults = {
+    baseURL: 'http://192.168.50.10:8080',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+    }
+  }
   return (
     <Router>
       <AuthProvider>

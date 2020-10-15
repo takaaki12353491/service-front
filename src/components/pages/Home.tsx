@@ -1,12 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from '../organisms/Header'
 
-interface Props {
-}
-
-const Home: React.FC<Props> = (props) => {
+const Home = () => {
   return(
-    <Header></Header>
+    <Header/>
   )
 }
 export default Home

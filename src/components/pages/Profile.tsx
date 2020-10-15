@@ -1,8 +1,6 @@
 import React from 'react'
 
-interface Props {}
-
-const Profile: React.FC<Props> = (props) => {
+const Profile = () => {
   return(
     <div>
 

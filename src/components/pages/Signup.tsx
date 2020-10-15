@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
-import { axios } from '../../modules/axios'
+import axios from 'axios'
 
 const Signup = () => {
   type FormData = {
