@@ -6,10 +6,12 @@ import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
 import { mpfdReq } from '../../modules/axios'
 import { URL } from '../../consts/URL'
+import { User } from '../../contexts/AuthContext'
 
 const Login = () => {
   type Response = {
     JwtToken: string
+    User: User
   }
   type FormData = {
     identity: string
@@ -23,8 +25,10 @@ const Login = () => {
     mpfdReq
       .post(URL.LOGIN, formData)
       .then((res: AxiosResponse<Response>) => {
-        document.location.href  = '/'
-        alert('You are logged in')
+        if (res.status === 200) {
+          document.location.href  = '/'
+          alert('You are logged in')
+        } 
       })
       .catch(() => {
         alert('error')

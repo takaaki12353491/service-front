@@ -20,7 +20,7 @@ const Signup = () => {
     mpfdReq
       .post('/signup', formData)
       .then((res) => {
-        alert('Your registration is complete')
+        res.status === 200 ? alert('Your registration is complete') : alert(res.data)
       })
       .catch(() => {
         alert('error')
