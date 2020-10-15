@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
-import { mpfdReq } from '../../modules/axios'
+import { Axios } from '../../modules/Axios'
 
 const Signup = () => {
   type FormData = {
@@ -17,7 +17,7 @@ const Signup = () => {
     formData.append('name', value.name)
     formData.append('email', value.email)
     formData.append('password', value.password)
-    mpfdReq
+    Axios.MPFD
       .post('/signup', formData)
       .then((res) => {
         res.status === 200 ? alert('Your registration is complete') : alert(res.data)

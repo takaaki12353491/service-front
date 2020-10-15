@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios'
 import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
-import { mpfdReq } from '../../modules/axios'
+import { Axios } from '../../modules/Axios'
 import { URL } from '../../consts/URL'
 import { User } from '../../contexts/AuthContext'
 
@@ -22,7 +22,7 @@ const Login = () => {
     const formData = new FormData()
     formData.append('identity', value.identity)
     formData.append('password', value.password)
-    mpfdReq
+    Axios.MPFD
       .post(URL.LOGIN, formData)
       .then((res: AxiosResponse<Response>) => {
         if (res.status === 200) {
