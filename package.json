@@ -7,6 +7,8 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@reduxjs/toolkit": "^1.4.0",
+    "@rescripts/cli": "^0.0.14",
+    "@rescripts/rescript-use-babel-config": "^0.0.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -37,10 +39,10 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "eject": "rescripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -69,5 +71,21 @@
     "@storybook/react": "^6.0.22",
     "babel-loader": "^8.1.0",
     "react-is": "^16.13.1"
-  }
+  },
+  "rescripts": [
+    [
+        "use-babel-config",
+            {
+                "presets": [
+                    "react-app",
+                    [
+                        "@babel/preset-typescript",
+                        {
+                            "allowNamespaces": true
+                        }
+                    ]
+                ]
+            }
+        ]
+    ]
 }
