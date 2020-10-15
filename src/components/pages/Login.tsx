@@ -1,9 +1,11 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import { AxiosResponse } from 'axios'
 import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
-import axios from 'axios'
+import { mpfdReq } from '../../modules/axios'
+import { URL } from '../../consts/URL'
 
 const Login = () => {
   type Response = {
@@ -18,21 +20,15 @@ const Login = () => {
     const formData = new FormData()
     formData.append('identity', value.identity)
     formData.append('password', value.password)
-    axios({
-      url: '/login',
-      method: 'post',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      data: formData,
-    })
-    .then((res) => {
-      document.location.href  = '/'
-      alert('You are logged in')
-    })
-    .catch(() => {
-      alert('error')
-    })
+    mpfdReq
+      .post(URL.LOGIN, formData)
+      .then((res: AxiosResponse<Response>) => {
+        document.location.href  = '/'
+        alert('You are logged in')
+      })
+      .catch(() => {
+        alert('error')
+      })
   })
   const formValue: FormProps = {
     submit: onSubmit,
