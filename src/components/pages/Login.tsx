@@ -10,14 +10,14 @@ import { Storage } from '../../modules/Storage'
 
 const Login = () => {
   type Response = {
-    JwtToken: string
+    JWT: string
     User: User
   }
   type FormData = {
     identity: string
     password: string
   }
-  const { handleSubmit } = useForm<FormData>()
+  const { register, handleSubmit } = useForm<FormData>()
   const onSubmit = handleSubmit((value) => {
     const formData = new FormData()
     formData.append('identity', value.identity)
@@ -26,10 +26,9 @@ const Login = () => {
       .post(Axios.URL.LOGIN, formData)
       .then((res: AxiosResponse<Response>) => {
         if (res.status === 200) {
-          Storage.Set(Storage.Key.JWT_TOKEN, res.data.JwtToken)
+          Storage.Set(Storage.Key.JWT, res.data.JWT)
           Storage.Set(Storage.Key.USER, res.data.User)
-          document.location.href  = '/'
-          alert('You are logged in')
+          window.location.href = '/'
         } else {
           alert('failed')
         }
@@ -45,12 +44,14 @@ const Login = () => {
     },
     textFields: [
       { 
-        name: 'name', label: 'name or email',
-        defaultValue: '', 
+        name: 'identity', label: 'name or email',
+        defaultValue: '',
+        inputRef: register(),
       },
       { 
         name: 'password', label: 'password', type: 'password',
         defaultValue: '',
+        inputRef: register(),
       },
     ]
   }

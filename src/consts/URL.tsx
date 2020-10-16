@@ -1,5 +1,5 @@
-export class URL {
-  public static readonly ID = '/:id'
-  public static readonly LOGIN = '/login'
-  public static readonly SIGNUP = '/signup'
+export namespace URL {
+  export const ID = '/:id'
+  export const LOGIN = '/login'
+  export const SIGNUP = '/signup'
 }

@@ -3,9 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { Menu, MenuItem, IconButton, Badge,  } from '@material-ui/core'
 import { Mail, Notifications, AccountCircle, More } from '@material-ui/icons'
 
-interface Props {}
-
-const UserMenu: React.FC<Props> = (props) => {
+const UserMenu = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);

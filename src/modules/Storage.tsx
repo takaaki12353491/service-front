@@ -12,6 +12,6 @@ export namespace Storage {
 
   export namespace Key {
     export const USER = 'user'
-    export const JWT_TOKEN = 'jwtToken'
+    export const JWT = 'jwt'
   }
 }

@@ -2,9 +2,9 @@ import React from 'react'
 import { Storage } from './Storage'
 
 export interface User {
-  id: string
-  name: string
-  avatorURL?: string
+  ID: string
+  Name: string
+  Email: string
 }
 
 export interface AuthState {
