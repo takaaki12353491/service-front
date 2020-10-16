@@ -5,7 +5,6 @@ import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
-import { URL } from '../../consts/URL'
 import { User } from '../../contexts/AuthContext'
 
 const Login = () => {
@@ -23,7 +22,7 @@ const Login = () => {
     formData.append('identity', value.identity)
     formData.append('password', value.password)
     Axios.MPFD
-      .post(URL.LOGIN, formData)
+      .post(Axios.URL.LOGIN, formData)
       .then((res: AxiosResponse<Response>) => {
         if (res.status === 200) {
           document.location.href  = '/'
