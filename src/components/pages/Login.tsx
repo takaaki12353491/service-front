@@ -5,7 +5,8 @@ import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
-import { User } from '../../contexts/AuthContext'
+import { User } from '../../modules/AuthContext'
+import { Storage } from '../../modules/Storage'
 
 const Login = () => {
   type Response = {
@@ -25,9 +26,13 @@ const Login = () => {
       .post(Axios.URL.LOGIN, formData)
       .then((res: AxiosResponse<Response>) => {
         if (res.status === 200) {
+          Storage.Set(Storage.Key.JWT_TOKEN, res.data.JwtToken)
+          Storage.Set(Storage.Key.USER, res.data.User)
           document.location.href  = '/'
           alert('You are logged in')
-        } 
+        } else {
+          alert('failed')
+        }
       })
       .catch(() => {
         alert('error')

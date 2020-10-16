@@ -1,7 +1,4 @@
 export namespace Storage {
-  export const USER = 'user'
-  export const JWT_TOKEN = 'jwtToken'
-
   export const Set = <T extends {}>(key: string, item: T): void => { 
     localStorage.setItem(key, JSON.stringify(item)) 
   } 
@@ -11,5 +8,10 @@ export namespace Storage {
     if (!data) return null
     let obj: T = JSON.parse(data)
     return obj 
-  } 
+  }
+
+  export namespace Key {
+    export const USER = 'user'
+    export const JWT_TOKEN = 'jwtToken'
+  }
 }

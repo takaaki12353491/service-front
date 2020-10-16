@@ -1,15 +1,17 @@
 import React from 'react'
-import { Storage } from '../modules/Storage'
+import { Storage } from './Storage'
 
 export interface User {
   id: string
   name: string
   avatorURL?: string
 }
+
 export interface AuthState {
   isAuthenticated: boolean
   user: User | null
 }
+
 export const AuthContext = React.createContext<AuthState>({
   isAuthenticated: false,
   user: null,
@@ -20,7 +22,7 @@ export const AuthProvider = (props: any) => {
   const [currentUser, setCurrentUser] = React.useState<User | null >(null)
 
   React.useEffect(() => {
-    var user = Storage.Get<User>(Storage.USER)
+    var user = Storage.Get<User>(Storage.Key.USER)
     setCurrentUser(user)
     setIsAuthenticated(!!user)
   }, []);
