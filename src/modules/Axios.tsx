@@ -13,8 +13,8 @@ export namespace Axios {
       'Content-Type': 'multipart/form-data'
     }
   })
-}
 
-export namespace Axios.URL{
-  export const LOGIN = '/login'
+  export namespace URL{
+    export const LOGIN = '/login'
+  }
 }
