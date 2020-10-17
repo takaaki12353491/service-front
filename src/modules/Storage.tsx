@@ -10,6 +10,10 @@ export namespace Storage {
     return obj 
   }
 
+  export const Remove = (key: string) => {
+    localStorage.removeItem(key)
+  }
+
   export namespace Key {
     export const USER = 'user'
     export const JWT = 'jwt'

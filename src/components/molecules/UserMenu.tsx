@@ -2,33 +2,41 @@ import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { Menu, MenuItem, IconButton, Badge,  } from '@material-ui/core'
 import { Mail, Notifications, AccountCircle, More } from '@material-ui/icons'
+import { Storage } from '../../modules/Storage'
 
 const UserMenu = () => {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null)
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen = Boolean(anchorEl)
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
+    setAnchorEl(null)
+    handleMobileMenuClose()
+  }
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
+    setMobileMoreAnchorEl(event.currentTarget)
+  }
 
-  const menuId = 'primary-search-account-menu';
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null)
+  }
+
+  const handleLogout = () => {
+    handleMenuClose()
+    Storage.Remove(Storage.Key.JWT)
+    Storage.Remove(Storage.Key.USER)
+    window.location.href = ''
+  }
+
+  const menuId = 'primary-search-account-menu'
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -39,12 +47,13 @@ const UserMenu = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+      <hr/>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
-  );
+  )
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = 'primary-search-account-menu-mobile'
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -82,6 +91,10 @@ const UserMenu = () => {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <hr/>
+      <MenuItem onClick={handleLogout}>
+        <p className={classes.menuItemContent} >Logout</p>
+      </MenuItem>
     </Menu>
   )
 
@@ -110,7 +123,7 @@ const UserMenu = () => {
         </IconButton>
         {renderMenu}
       </div>
-      <div className={classes.sectionMobile}>
+    <div className={classes.sectionMobile}>
       <IconButton
         aria-label="show more"
         aria-controls={mobileMenuId}
@@ -129,6 +142,9 @@ export default UserMenu
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    menuItemContent: {
+      margin: '0 auto',
+    },
     sectionDesktop: {
       display: 'none',
       [theme.breakpoints.up('md')]: {
