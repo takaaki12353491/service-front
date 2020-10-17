@@ -5,13 +5,13 @@ import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
-import { User } from '../../modules/AuthContext'
+import { Type } from '../../modules/Type'
 import { Storage } from '../../modules/Storage'
 
 const Login = () => {
   type Response = {
     JWT: string
-    User: User
+    User: Type.User
   }
   type FormData = {
     identity: string
