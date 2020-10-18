@@ -9,6 +9,6 @@ export namespace Type {
     ID: string
 	  Owner: User
 	  Name: string
-	  Description: string
+	  Description?: string
   }
 }
