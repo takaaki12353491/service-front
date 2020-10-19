@@ -9,7 +9,7 @@ const Communities = () => {
   return (
     <Switch>
       <PrivateRoute exact path={`${match.url}/new`} component={NewCommunity}/>
-      <Route exact path={`${match.url}}/:id`}/>
+      <Route exact path={`${match.url}/:id`}/>
     </Switch>
   )
 }
