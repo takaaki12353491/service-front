@@ -17,7 +17,7 @@ export const AuthProvider = (props: any) => {
   const [currentUser, setCurrentUser] = React.useState<Type.User | null >(null)
 
   React.useEffect(() => {
-    var user = Storage.Get<Type.User>(Storage.Key.USER)
+    const user = Storage.Get<Type.User>(Storage.Key.USER)
     setCurrentUser(user)
     setIsAuthenticated(!!user)
   }, []);

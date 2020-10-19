@@ -5,25 +5,23 @@ import { Menu, Search } from '@material-ui/icons'
 import { AuthContext } from '../../modules/AuthContext'
 import UserMenu from '../molecules/UserMenu'
 
-interface Props {}
-
-const Header: React.FC<Props> = (props) => {
+const Header = () => {
   const classes = useStyles()
-  const user = React.useContext(AuthContext)
-
+  //const user = React.useContext(AuthContext)
+  //alert('Header:'+user.isAuthenticated)
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position='static'>
         <Toolbar>
           <IconButton
-            edge="start"
+            edge='start'
             className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
+            color='inherit'
+            aria-label='open drawer'
           >
             <Menu />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant='h6' noWrap>
             Material-UI
           </Typography>
           <div className={classes.search}>
@@ -31,7 +29,7 @@ const Header: React.FC<Props> = (props) => {
               <Search />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder='Search…'
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -40,7 +38,7 @@ const Header: React.FC<Props> = (props) => {
             />
           </div>
           <div className={classes.grow} />
-          {user.isAuthenticated ? <UserMenu/> : <Button color="inherit" href="/login">Login</Button>}
+          {true ? <UserMenu/> : <Button color='inherit' href='/login'>Login</Button>}
         </Toolbar>
       </AppBar>
     </div>

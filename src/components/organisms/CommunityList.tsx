@@ -23,7 +23,7 @@ const CommunityList = () => {
   const list = []
   for (const community of communities) {
     list.push(
-      <ListItem button>
+      <ListItem key={community.ID} button>
         <ListItemAvatar>
           <Avatar>
             <ImageIcon />
