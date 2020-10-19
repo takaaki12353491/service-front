@@ -2,13 +2,11 @@ import React from 'react'
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { AppBar, Toolbar, IconButton, Typography, InputBase, Button } from '@material-ui/core'
 import { Menu, Search } from '@material-ui/icons'
-import { AuthContext } from '../../modules/AuthContext'
+import { State } from '../../modules/State'
 import UserMenu from '../molecules/UserMenu'
 
 const Header = () => {
   const classes = useStyles()
-  //const user = React.useContext(AuthContext)
-  //alert('Header:'+user.isAuthenticated)
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -38,7 +36,7 @@ const Header = () => {
             />
           </div>
           <div className={classes.grow} />
-          {true ? <UserMenu/> : <Button color='inherit' href='/login'>Login</Button>}
+          {State.isAuthenticated() ? <UserMenu/> : <Button color='inherit' href='/login'>Login</Button>}
         </Toolbar>
       </AppBar>
     </div>
