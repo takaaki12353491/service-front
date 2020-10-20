@@ -43,6 +43,7 @@
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
+    "build:dev": "NODE_ENV=development rescripts build",
     "test": "rescripts test",
     "eject": "rescripts eject",
     "storybook": "start-storybook -p 6006 -s public",

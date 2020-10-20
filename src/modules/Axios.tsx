@@ -6,7 +6,7 @@ export namespace Axios {
   }
 
   axios.defaults = {
-    baseURL: 'http://192.168.50.10:8080',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
     },
