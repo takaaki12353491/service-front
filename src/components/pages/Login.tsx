@@ -1,6 +1,6 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
-import { AxiosResponse } from 'axios'
 import Auth from '../organisms/Auth'
 import { FormContext, FormProps } from '../molecules/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
@@ -24,11 +24,11 @@ const Login = () => {
     formData.append('password', value.password)
     Axios.MPFD
       .post(Axios.URL.LOGIN, formData)
-      .then((res: AxiosResponse<Response>) => {
+      .then((res: Axios.Response<Response>) => {
         if (res.status === 200) {
           Storage.Set(Storage.Key.JWT, res.data.JWT)
           Storage.Set(Storage.Key.USER, res.data.User)
-          window.location.href = '/'
+          useHistory().push('/')
         } else {
           alert('failed')
         }
