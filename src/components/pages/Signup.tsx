@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
-import Auth from '../organisms/Auth'
-import { FormContext, FormProps } from '../molecules/Form'
+import Auth from '../templates/Auth'
+import { FormContext, FormProps } from '../organisms/Form'
 import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
 

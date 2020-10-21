@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import Form from '../molecules/Form'
+import Form from '../organisms/Form'
 import NavLinks from '../molecules/Navigation'
 
 interface Props {
