@@ -9,6 +9,7 @@ import { Type } from '../../modules/Type'
 import { Storage } from '../../modules/Storage'
 
 const Login = () => {
+  const history = useHistory()
   type Response = {
     JWT: string
     User: Type.User
@@ -28,7 +29,7 @@ const Login = () => {
         if (res.status === 200) {
           Storage.Set(Storage.Key.JWT, res.data.JWT)
           Storage.Set(Storage.Key.USER, res.data.User)
-          useHistory().push('/')
+          history.push('/')
         } else {
           alert('failed')
         }
