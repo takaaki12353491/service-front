@@ -7,6 +7,7 @@ import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
 import { Type } from '../../modules/Type'
 import { Storage } from '../../modules/Storage'
+import { Name } from '../../consts/Name'
 
 const Login = () => {
   const history = useHistory()
@@ -21,8 +22,8 @@ const Login = () => {
   const { register, handleSubmit } = useForm<FormData>()
   const onSubmit = handleSubmit((value) => {
     const formData = new FormData()
-    formData.append('identity', value.identity)
-    formData.append('password', value.password)
+    formData.append(Name.IDENTITY, value.identity)
+    formData.append(Name.PASSWORD, value.password)
     Axios.MPFD
       .post(Axios.URL.LOGIN, formData)
       .then((res: Axios.Response<Response>) => {
@@ -45,12 +46,12 @@ const Login = () => {
     },
     textFields: [
       { 
-        name: 'identity', label: 'name or email',
+        name: Name.IDENTITY, label: 'name or email',
         defaultValue: '',
         inputRef: register(),
       },
       { 
-        name: 'password', label: 'password', type: 'password',
+        name: Name.PASSWORD, label: 'password', type: 'password',
         defaultValue: '',
         inputRef: register(),
       },
