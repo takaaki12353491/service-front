@@ -3,15 +3,15 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 import Link, { LinkProps } from '../atoms/Link'
 
-export interface NavLinkProps {
+export interface NavigationProps {
   items?: LinkProps[]
 }
 
-export const NavLinkContext = React.createContext<NavLinkProps>({})
+export const NavigationContext = React.createContext<NavigationProps>({})
 
-const NavLinks: React.FC<NavLinkProps> = (props) => {
+const Navigation: React.FC<NavigationProps> = (props) => {
   const classes = useStyles()
-  const value = React.useContext(NavLinkContext)
+  const value = React.useContext(NavigationContext)
   const list = []
   const items = value.items ? value.items : [] 
   for (const item of items) {
@@ -29,7 +29,7 @@ const NavLinks: React.FC<NavLinkProps> = (props) => {
     </div>
   )
 }
-export default NavLinks
+export default Navigation
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

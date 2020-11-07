@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
 import { FormContext, FormProps } from '../organisms/Form'
-import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
+import { NavigationProps, NavigationContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
 import { Type } from '../../modules/Type'
 import { Storage } from '../../modules/Storage'
@@ -57,7 +57,7 @@ const Login = () => {
       },
     ]
   }
-  const navLinkValue: NavLinkProps = {
+  const navLinkValue: NavigationProps = {
     items: [
       { href:'/', text:'Home' },
       { href:'/signup', text:'Signup' },
@@ -65,9 +65,9 @@ const Login = () => {
   }
   return(
     <FormContext.Provider value={formValue}>
-      <NavLinkContext.Provider value={navLinkValue}>
+      <NavigationContext.Provider value={navLinkValue}>
         <Auth title='Login'/>
-      </NavLinkContext.Provider>
+      </NavigationContext.Provider>
     </FormContext.Provider>
   )
 }

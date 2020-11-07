@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
 import { FormContext, FormProps } from '../organisms/Form'
-import { NavLinkProps, NavLinkContext } from '../molecules/Navigation'
+import { NavigationProps, NavigationContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
 
 const Signup = () => {
@@ -61,7 +61,7 @@ const Signup = () => {
       },
     ]
   }
-  const navLinkValue: NavLinkProps = {
+  const navLinkValue: NavigationProps = {
     items: [
       { href:'/', text:'Home' },
       { href:'/login', text:'Login' },
@@ -69,9 +69,9 @@ const Signup = () => {
   }
   return(
     <FormContext.Provider value={formValue}>
-      <NavLinkContext.Provider value={navLinkValue}>
+      <NavigationContext.Provider value={navLinkValue}>
         <Auth title='Sign Up'/>
-      </NavLinkContext.Provider>
+      </NavigationContext.Provider>
     </FormContext.Provider>
   )
 }
