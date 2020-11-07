@@ -4,6 +4,7 @@ import { AppBar, Toolbar, IconButton, Typography, InputBase, Button } from '@mat
 import { Menu, Search } from '@material-ui/icons'
 import { State } from '../../modules/State'
 import UserMenu from '../molecules/UserMenu'
+import URL from '../../consts/URL'
 
 const Header = () => {
   const classes = useStyles()
@@ -35,6 +36,7 @@ const Header = () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          {State.isAuthenticated() && <Button color='inherit' href={URL.COMMUNITIES.NEW}>コミュニティ作成</Button> }
           <div className={classes.grow} />
           {State.isAuthenticated() ? <UserMenu/> : <Button color='inherit' href='/login'>Login</Button>}
         </Toolbar>
