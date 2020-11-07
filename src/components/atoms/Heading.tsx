@@ -1,11 +1,11 @@
 import React from 'react'
 
-interface Props {
-  size: "1" | "2" | "3" | "4" | "5" | "6"
+export interface HeadingProps {
+  size?: "1" | "2" | "3" | "4" | "5" | "6"
   text?: string
 }
 
-const Heading: React.FC<Props> = (props) =>{
+const Heading: React.FC<HeadingProps> = (props) =>{
   return React.createElement(
     `h${props.size}`,
     {},
