@@ -13,20 +13,19 @@ export interface FormItemProps {
 
 export const FormItemContext = React.createContext<FormItemProps>({})
 
-const FormItem: React.FC = () => {
+const FormItem: React.FC<FormItemProps> = (props) => {
   const classes = useStyles()
-  const value = React.useContext(FormItemContext)
   const getItem = () => {
-    if (isTextField(value.item)) {
-      return <TextField {...value.item}/>
-    } else if (isFileButton(value.item)) {
-      return <FileButton/>
+    if (isTextField(props.item)) {
+      return <TextField {...props.item} variant='outlined'/>
+    } else if (isFileButton(props.item)) {
+      return <FileButton {...props.item}/>
     }
   }
   const item = getItem()
   return(
     <div className={classes.root}>
-      <Heading {...value.heading}/>
+      {props.heading && <Heading {...props.heading}/>}
       {item}
     </div>
   )
@@ -34,20 +33,17 @@ const FormItem: React.FC = () => {
 export default FormItem
 
 const isTextField = (item: any): item is TextFieldProps =>
-  item.type !== undefined
+  item.name !== undefined
 
 const isFileButton = (item: any): item is FileButtonProps =>
-  item.href !== undefined
+  true
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
+      margin: '20px 0',
       textAlign: 'center',
-      color: theme.palette.text.secondary,
     },
   }),
 );

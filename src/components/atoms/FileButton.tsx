@@ -5,14 +5,11 @@ export interface FileButtonProps extends MButtonProps {
   text?: string
 }
 
-export const FileButtonContext = React.createContext<FileButtonProps>({})
-
-const FileButton: React.FC = () => {
-  const value = React.useContext(FileButtonContext)
+const FileButton: React.FC<FileButtonProps> = (props) => {
   return (
-    <MButton {...value}>
-      {value.text}
-      <input type="file" style={{ display: "none" }}/>
+    <MButton {...props}>
+      {props.text}
+      <input type='file' style={{ display: 'none' }}/>
     </MButton>
   )
 }

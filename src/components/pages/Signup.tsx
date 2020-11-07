@@ -31,33 +31,36 @@ const Signup = () => {
     button: {
       text: 'Signup',
     },
-    textFields: [
+    items: [
       { 
-        name: 'name', label: 'name', 
-        defaultValue: '',
-        inputRef: register({ required: 'required', maxLength: 16 }), 
-        helperText: errors.name && errors.name.message,
-        error: !!errors.name,
+        item: {
+          name: 'name', label: 'name', defaultValue: '',
+          inputRef: register({ required: 'required', maxLength: 16 }), 
+          helperText: errors.name && errors.name.message,
+          error: !!errors.name,
+        }
       },
       { 
-        name: 'email', label: 'email', type: 'email',
-        defaultValue: '',
-        inputRef: register({ 
-          required: 'required',
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "invalid email address"
-          }
-        }),
-        helperText: errors.email && errors.email.message,
-        error: !!errors.email,
+        item: {
+          name: 'email', label: 'email', type: 'email', defaultValue: '',
+          inputRef: register({ 
+            required: 'required',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "invalid email address"
+            }
+          }),
+          helperText: errors.email && errors.email.message,
+          error: !!errors.email,
+        }
       },
       { 
-        name: 'password', label: 'password', type: 'password',
-        defaultValue: '',
-        inputRef: register({ required: 'required' }),
-        helperText: errors.password && errors.password.message,
-        error: !!errors.password,
+        item: {
+          name: 'password', label: 'password', type: 'password', defaultValue: '',
+          inputRef: register({ required: 'required' }),
+          helperText: errors.password && errors.password.message,
+          error: !!errors.password,
+        }
       },
     ]
   }

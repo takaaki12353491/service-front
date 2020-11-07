@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import { TextField, TextFieldProps } from '@material-ui/core'
+import FormItem, { FormItemProps } from '../molecules/FormItem'
 import Button, { ButtonProps } from '../atoms/Button'
 
 export interface FormProps {
   submit?: () => {}
   button?: ButtonProps
-  textFields?: TextFieldProps[]
+  items?: FormItemProps[]
 }
 
 export const FormContext = React.createContext<FormProps>({})
@@ -15,10 +15,10 @@ const Form: React.FC = () => {
   const classes = useStyles()
   const value = React.useContext(FormContext)
   const list = []
-  const items = value.textFields ? value.textFields : []
+  const items = value.items ? value.items : []
   for (const item of items) {
     list.push(
-      <TextField {...item} key={item.name} className={classes.textField} variant='outlined'/>
+      <FormItem {...item} key={list.length}/>
     )
   }
   return (
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '300px',
       margin: '30px auto',
     },
-    textField: {
+    item: {
       width: '100%',
       margin: '10px auto',
     },

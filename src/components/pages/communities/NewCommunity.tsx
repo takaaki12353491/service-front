@@ -15,16 +15,20 @@ const NewCommunity = () => {
   const formValue: FormProps = {
     submit: onSubmit,
     button: { text: 'Submit' },
-    textFields: [
+    items: [
       {
-        name: 'name', label: 'name',
-        inputRef: register(),
+        item: {
+          name: 'name', label: 'name',
+          inputRef: register(),
+        }
       },
       {
-        name: 'description', label: 'description',
-        multiline: true, rows: 4,
-        inputRef: register(),
-      }
+        item: {
+          name: 'description', label: 'description',
+          multiline: true, rows: 4,
+          inputRef: register(),
+        }
+      },
     ]
   }
   return (

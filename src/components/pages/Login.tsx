@@ -44,16 +44,18 @@ const Login = () => {
     button: {
       text: 'Login'
     },
-    textFields: [
+    items: [
       { 
-        name: Name.IDENTITY, label: 'name or email',
-        defaultValue: '',
-        inputRef: register(),
+        item: {
+          name: Name.IDENTITY, label: 'name or email', defaultValue: '',
+          inputRef: register(),
+        }
       },
       { 
-        name: Name.PASSWORD, label: 'password', type: 'password',
-        defaultValue: '',
-        inputRef: register(),
+        item: {
+          name: Name.PASSWORD, label: 'password', type: 'password', defaultValue: '',
+          inputRef: register(),
+        }
       },
     ]
   }
