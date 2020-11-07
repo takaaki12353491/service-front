@@ -7,11 +7,11 @@ export interface ButtonProps extends MButtonProps {
 
 export const ButtonContext = React.createContext<ButtonProps>({})
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button: React.FC = () => {
   const value = React.useContext(ButtonContext)
   return (
-    <MButton {...value} {...props}>
-      {props.text ? props.text : value.text}
+    <MButton {...value}>
+      {value.text}
     </MButton>
   )
 }
