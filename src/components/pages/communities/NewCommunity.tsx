@@ -1,9 +1,11 @@
 import React from 'react'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import Form, { FormContext, FormProps } from '../../organisms/Form'
 
 const NewCommunity = () => {
+  const classes = useStyles()
   type FormData = {
     name: string
     description: string
@@ -16,6 +18,20 @@ const NewCommunity = () => {
     submit: onSubmit,
     button: { text: 'Submit' },
     items: [
+      {
+        item: {
+          id: 'header',
+          avator: {
+            variant: 'square',
+            className: classes.header, 
+          },
+        }
+      },
+      {
+        item: {
+          id: 'icon'
+        }
+      },
       {
         item: {
           name: 'name', label: 'name',
@@ -38,3 +54,11 @@ const NewCommunity = () => {
   )
 }
 export default NewCommunity
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    header: {
+      width: '100%',
+    },
+  }),
+)

@@ -36,7 +36,7 @@ const isTextField = (item: any): item is TextFieldProps =>
   item.name !== undefined
 
 const isFileButton = (item: any): item is FileButtonProps =>
-  true
+  item.id !== undefined
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
