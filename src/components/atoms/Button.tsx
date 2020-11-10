@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button as MButton, ButtonProps as MButtonProps } from '@material-ui/core'
 
-export interface ButtonProps extends MButtonProps {
+export interface ButtonProps {
   text?: string
+  type?: 'button' | 'submit' | 'reset'
+  className?: string
 }
 
 export const ButtonContext = React.createContext<ButtonProps>({})
@@ -10,9 +11,9 @@ export const ButtonContext = React.createContext<ButtonProps>({})
 const Button: React.FC<ButtonProps> = (props) => {
   const value = React.useContext(ButtonContext)
   return (
-    <MButton {...value} {...props}>
+    <button {...value} {...props}>
       {props.text ? props.text : value.text}
-    </MButton>
+    </button>
   )
 }
 export default Button

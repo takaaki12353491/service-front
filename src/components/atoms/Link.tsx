@@ -1,15 +1,17 @@
 import React from 'react'
-import { Link as MLink, LinkProps as MLinkProps } from '@material-ui/core'
+import styled from 'styled-components'
 
-export interface LinkProps extends MLinkProps {
-  text?: string
+export interface LinkProps {
+  href: string
+  text: string
+  className?: string
 }
 
 const Link: React.FC<LinkProps> = (props) => {
   return (
-    <MLink {...props}>
+    <a className={props.className} href={props.href}>
       {props.text}
-    </MLink>
+    </a>
   )
 }
 export default Link

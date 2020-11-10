@@ -21,10 +21,6 @@ const NewCommunity = () => {
       {
         item: {
           id: 'header',
-          avator: {
-            variant: 'square',
-            className: classes.header, 
-          },
         }
       },
       {
