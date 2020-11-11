@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { StyledFunction } from 'styled-components'
+import styled from 'styled-components'
 import { State } from '../../modules/State'
 import URL from '../../consts/URL'
 import Name from '../../consts/Name'

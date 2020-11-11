@@ -4,7 +4,7 @@ import PrivateRoute from './PrivateRoute'
 import NewCommunity from '../components/pages/communities/NewCommunity'
 import Community from '../components/pages/communities/Community'
 
-const Communities = () => {
+const Communities: React.FC = () => {
   const match = useRouteMatch()
   
   return (

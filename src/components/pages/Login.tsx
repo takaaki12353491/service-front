@@ -2,14 +2,14 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
-import { FormContext, FormProps } from '../organisms/Form'
-import { NavigationProps, NavigationContext } from '../molecules/Navigation'
+import { FormContext } from '../organisms/Form'
+import { NavigationContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
 import { Type } from '../../modules/Type'
 import { Storage } from '../../modules/Storage'
 import { Name } from '../../consts/Name'
 
-const Login = () => {
+const Login: React.FC = () => {
   const history = useHistory()
   type Response = {
     JWT: string
@@ -39,35 +39,33 @@ const Login = () => {
         alert('error')
       })
   })
-  const formValue: FormProps = {
-    submit: onSubmit,
-    button: {
-      text: 'Login'
-    },
-    items: [
-      { 
-        item: {
-          name: Name.IDENTITY, label: 'name or email', defaultValue: '',
-          inputRef: register(),
-        }
-      },
-      { 
-        item: {
-          name: Name.PASSWORD, label: 'password', type: 'password', defaultValue: '',
-          inputRef: register(),
-        }
-      },
-    ]
-  }
-  const navLinkValue: NavigationProps = {
-    items: [
-      { href:'/', text:'Home' },
-      { href:'/signup', text:'Signup' },
-    ]
-  }
   return(
-    <FormContext.Provider value={formValue}>
-      <NavigationContext.Provider value={navLinkValue}>
+    <FormContext.Provider value={{
+      submit: onSubmit,
+      button: {
+        text: 'Login'
+      },
+      items: [
+        { 
+          item: {
+            name: Name.IDENTITY, label: 'name or email', defaultValue: '',
+            inputRef: register(),
+          }
+        },
+        { 
+          item: {
+            name: Name.PASSWORD, label: 'password', type: 'password', defaultValue: '',
+            inputRef: register(),
+          }
+        },
+      ]
+    }}>
+      <NavigationContext.Provider value={{
+        items: [
+          { href:'/', text:'Home' },
+          { href:'/signup', text:'Signup' },
+        ]
+      }}>
         <Auth title='Login'/>
       </NavigationContext.Provider>
     </FormContext.Provider>

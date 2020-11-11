@@ -1,32 +1,25 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import styled from 'styled-components'
+import Heading from '../atoms/Heading'
 import Form from '../organisms/Form'
-import NavLinks from '../molecules/Navigation'
+import Navigation from '../molecules/Navigation'
 
-interface Props {
-  title?: string
-}
-
-const Auth: React.FC<Props> = (props) => {
-  const classes = useStyles()
+const Auth: React.FC<{
+  title: string
+}> = (props) => {
   return (
-    <div className={classes.container}>
-      <Typography variant="h3">{props.title}</Typography>
+    <Container>
+      <Heading size={3} text={props.title}/>
       <hr/>
       <Form/>
-      <NavLinks/>
-    </div>
+      <Navigation/>
+    </Container>
   ) 
 }
 export default Auth
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      width: '500px',
-      margin: '50px auto 0 auto',
-      textAlign: 'center',
-    },
-  }),
-)
+const Container = styled.div`
+  width: 500px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+`

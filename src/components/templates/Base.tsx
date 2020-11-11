@@ -11,3 +11,4 @@ const Base: React.FC = (props) => {
     </>
   )
 }
+export default Base
