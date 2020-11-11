@@ -27,7 +27,7 @@ const Header: React.FC = () => {
             { value: 'project', text: 'project' },
           ]}  
         />
-        <Input name={Name.SEARCH}/>
+        <Input name={Name.SEARCH} placeholder='search...'/>
       </Search>
     </Container>
   )
@@ -48,7 +48,7 @@ const Container = styled.header`
 const HomeLink = styled(Link)`
   color: white;
   text-decoration: none;
-  &:hover: {
+  &:hover {
     color: gray;
   }
 `
