@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
+import { ButtonContext } from '../atoms/Button'
 import { FormContext } from '../organisms/Form'
 import { NavigationContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
@@ -29,39 +30,33 @@ const Signup: React.FC = () => {
   return(
     <FormContext.Provider value={{
       submit: onSubmit,
-      button: {
-        text: 'Signup',
-      },
       items: [
         { 
           item: {
-            name: 'name', label: 'name', defaultValue: '',
-            inputRef: register({ required: 'required', maxLength: 16 }), 
-            helperText: errors.name && errors.name.message,
-            error: !!errors.name,
-          }
+            name: 'name', placeholder: 'name', defaultValue: '',
+            ref: register({ required: 'required', maxLength: 16 }), 
+          },
+          errMsg: errors.name?.message,
         },
         { 
           item: {
-            name: 'email', label: 'email', type: 'email', defaultValue: '',
-            inputRef: register({ 
+            name: 'email', placeholder: 'email', type: 'text', defaultValue: '',
+            ref: register({ 
               required: 'required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: "invalid email address"
               }
             }),
-            helperText: errors.email && errors.email.message,
-            error: !!errors.email,
-          }
+          },
+          errMsg: errors.email?.message
         },
         { 
           item: {
-            name: 'password', label: 'password', type: 'password', defaultValue: '',
-            inputRef: register({ required: 'required' }),
-            helperText: errors.password && errors.password.message,
-            error: !!errors.password,
-          }
+            name: 'password', placeholder: 'password', type: 'password', defaultValue: '',
+            ref: register({ required: 'required' }),
+          },
+          errMsg: errors.password?.message
         },
       ]
     }}>
@@ -71,7 +66,12 @@ const Signup: React.FC = () => {
           { href:'/login', text:'Login' },
         ]
       }}>
-        <Auth title='Sign Up'/>
+        <ButtonContext.Provider value={{
+          type: 'submit',
+          text: 'Sign Up',
+        }}>
+          <Auth title='Sign Up'/>
+        </ButtonContext.Provider>
       </NavigationContext.Provider>
     </FormContext.Provider>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
+import { ButtonContext } from '../atoms/Button'
 import { FormContext } from '../organisms/Form'
 import { NavigationContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
@@ -42,20 +43,17 @@ const Login: React.FC = () => {
   return(
     <FormContext.Provider value={{
       submit: onSubmit,
-      button: {
-        text: 'Login'
-      },
       items: [
         { 
           item: {
-            name: Name.IDENTITY, label: 'name or email', defaultValue: '',
-            inputRef: register(),
+            name: Name.IDENTITY, placeholder: 'name or email', defaultValue: '',
+            ref: register(),
           }
         },
         { 
           item: {
-            name: Name.PASSWORD, label: 'password', type: 'password', defaultValue: '',
-            inputRef: register(),
+            name: Name.PASSWORD, placeholder: 'password', type: 'password', defaultValue: '',
+            ref: register(),
           }
         },
       ]
@@ -66,7 +64,12 @@ const Login: React.FC = () => {
           { href:'/signup', text:'Signup' },
         ]
       }}>
-        <Auth title='Login'/>
+        <ButtonContext.Provider value={{
+          type: 'submit',
+          text: 'Login'
+        }}>
+          <Auth title='Login'/>
+        </ButtonContext.Provider>
       </NavigationContext.Provider>
     </FormContext.Provider>
   )

@@ -1,10 +1,9 @@
 import React from 'react'
 import FormItem, { FormItemProps } from '../molecules/FormItem'
-import Button, { ButtonProps } from '../atoms/Button'
+import Button from '../atoms/Button'
 
 export interface FormProps {
   submit?: () => {}
-  button?: ButtonProps
   items?: FormItemProps[]
 }
 
@@ -22,7 +21,7 @@ const Form: React.FC = () => {
   return (
     <form onSubmit={value.submit}>
       {list}
-      <Button {...value.button} type='submit'/>
+      <Button/>
     </form>
   )
 }

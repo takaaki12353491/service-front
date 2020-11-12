@@ -2,12 +2,15 @@ import React from 'react'
 
 export interface InputProps {
   name: string
+  type?: 'text' | 'password'
   placeholder?: string
+  defaultValue?: string
+  ref?: any
 }
 
-const Input: React.FC<InputProps> = (props) => {
+const Input = React.forwardRef((props: InputProps, ref: any) => {
   return (
-    <input {...props}/>
+    <input ref={ref} {...props}/>
   )
-}
+})
 export default Input

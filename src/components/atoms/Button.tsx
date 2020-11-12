@@ -1,18 +1,18 @@
 import React from 'react'
 
 export interface ButtonProps {
-  text?: string
   type?: 'button' | 'submit' | 'reset'
+  text?: string
   className?: string
 }
 
 export const ButtonContext = React.createContext<ButtonProps>({})
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button: React.FC = () => {
   const value = React.useContext(ButtonContext)
   return (
-    <button {...value} {...props}>
-      {props.text ? props.text : value.text}
+    <button {...value}>
+      {value.text}
     </button>
   )
 }
