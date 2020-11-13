@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { 
   Input, InputProps, InputContext,
   Heading, HeadingProps, HeadingContext,
+  Text, 
 } from '../atoms'
 import FileButton, { FileButtonProps, FileButtonContext } from '../atoms/FileButton'
 
@@ -16,27 +17,12 @@ export interface FormItemProps {
 
 export const FormItemContext = React.createContext<FormItemProps>({})
 
-const FormItem: React.FC<FormItemProps> = (props) => {
-  const getItem = () => {
-    if (isInput(props.item)) {
-      return (
-        <InputContext.Provider value={{...props.item}}>
-          <Input/>
-        </InputContext.Provider>
-      )
-    } else if (isFileButton(props.item)) {
-      return (
-        <FileButtonContext.Provider value={{...props.item}}>
-          <FileButton/>
-        </FileButtonContext.Provider>
-      )
-    }
-  }
-  const item = getItem()
+export const FormItem: React.FC = (props) => {
   return(
     <Container>
-      {props.heading && <Heading {...props.heading}/>}
-      {item}
+      <Heading/>
+      {props.children}
+      <ErrorText/>
     </Container>
   )
 }
@@ -52,4 +38,8 @@ const Container = styled.div`
   flex-grow: 1;
   margin: 20px 0;
   text-align: center;
+`
+
+const ErrorText = styled(Text)`
+  color: red;
 `

@@ -12,11 +12,11 @@ export const InputContext = React.createContext<InputProps>({
   name: ''
 })
 
-export const Input: React.FC = () => {
+export const Input: React.FC<{className?: string}> = (props) => {
   const value = React.useContext(InputContext)
   const ref = React.useRef(value.ref)
   return (
-    <input ref={ref} {...value}/>
+    <input className={props.className} ref={ref} {...value}/>
   )
 }
 export default Input

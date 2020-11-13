@@ -4,12 +4,10 @@ import Heading from '../atoms/Heading'
 import Form from '../organisms/Form'
 import Navigation from '../molecules/Navigation'
 
-const Auth: React.FC<{
-  title: string
-}> = (props) => {
+export const Auth: React.FC = () => {
   return (
     <Container>
-      <Heading size={3} text={props.title}/>
+      <Heading/>
       <hr/>
       <Form/>
       <Navigation/>

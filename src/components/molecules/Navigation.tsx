@@ -8,7 +8,7 @@ export interface NavigationProps {
 
 export const NavigationContext = React.createContext<NavigationProps>({})
 
-const Navigation: React.FC = () => {
+export const Navigation: React.FC = () => {
   const value = React.useContext(NavigationContext)
   const list = []
   const items = value.items ? value.items : [] 

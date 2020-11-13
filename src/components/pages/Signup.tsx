@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import { ButtonContext, HeadingContext } from '../atoms'
+import { NavigationContext } from '../molecules'
+import { FormContext } from '../organisms'
 import Auth from '../templates/Auth'
-import { ButtonContext } from '../atoms/Button'
-import { FormContext } from '../organisms/Form'
-import { NavigationContext } from '../molecules/Navigation'
 import { Axios } from '../../modules/Axios'
 
 const Signup: React.FC = () => {
@@ -70,7 +70,12 @@ const Signup: React.FC = () => {
           type: 'submit',
           text: 'Sign Up',
         }}>
-          <Auth title='Sign Up'/>
+          <HeadingContext.Provider value={{
+            size: 3,
+            text: 'Sign Up',
+          }}>
+            <Auth/>
+          </HeadingContext.Provider>
         </ButtonContext.Provider>
       </NavigationContext.Provider>
     </FormContext.Provider>

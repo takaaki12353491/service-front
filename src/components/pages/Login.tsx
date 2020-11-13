@@ -2,13 +2,11 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
-import { ButtonContext } from '../atoms/Button'
-import { FormContext } from '../organisms/Form'
-import { NavigationContext } from '../molecules/Navigation'
-import { Axios } from '../../modules/Axios'
-import { Type } from '../../modules/Type'
-import { Storage } from '../../modules/Storage'
-import { Name } from '../../consts/Name'
+import { ButtonContext, HeadingContext } from '../atoms'
+import { NavigationContext } from '../molecules'
+import { FormContext } from '../organisms'
+import { Axios, Type, Storage } from '../../modules'
+import { Name } from '../../consts'
 
 const Login: React.FC = () => {
   const history = useHistory()
@@ -68,7 +66,12 @@ const Login: React.FC = () => {
           type: 'submit',
           text: 'Login'
         }}>
-          <Auth title='Login'/>
+          <HeadingContext.Provider value={{
+            size: 3,
+            text: 'Login'
+          }}>
+            <Auth/>
+          </HeadingContext.Provider>
         </ButtonContext.Provider>
       </NavigationContext.Provider>
     </FormContext.Provider>

@@ -14,7 +14,7 @@ export const SelectContext = React.createContext<SelectProps>({
   name: '', options: [],
 })
 
-export const Select: React.FC = () => {
+export const Select: React.FC<{className?: string}> = (props) => {
   const value = React.useContext(SelectContext)
   const list = []
   for (const option of value.options) {
@@ -25,7 +25,7 @@ export const Select: React.FC = () => {
     )
   }
   return (
-    <select>
+    <select className={props.className}>
       {list}
     </select>
   )

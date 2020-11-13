@@ -3,17 +3,16 @@ import React from 'react'
 export interface LinkProps {
   href: string
   text: string
-  className?: string
 }
 
 export const LinkContext = React.createContext<LinkProps>({
   href: '', text: ''
 })
 
-export const Link: React.FC = () => {
+export const Link: React.FC<{className?: string}> = (props) => {
   const value = React.useContext(LinkContext)
   return (
-    <a className={value.className} href={value.href}>
+    <a className={props.className} href={value.href}>
       {value.text}
     </a>
   )

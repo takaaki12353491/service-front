@@ -8,7 +8,7 @@ import {
   Link, LinkContext
 } from '../atoms'
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   return (
     <Container>
       <LinkContext.Provider value={{

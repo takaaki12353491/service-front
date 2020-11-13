@@ -4,14 +4,13 @@ import { FaCamera } from 'react-icons/fa'
 
 export interface FileButtonProps {
   id: string
-  className?: string
 }
 
 export const FileButtonContext = React.createContext<FileButtonProps>({
   id: 'id',
 })
 
-export const FileButton: React.FC = () => {
+export const FileButton: React.FC<{className?: string}> = (props) => {
   const value = React.useContext(FileButtonContext)
   const [ src, setSrc ] = React.useState<string>()
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +24,7 @@ export const FileButton: React.FC = () => {
     reader.readAsDataURL(files[0])
   }
   return (
-    <Container className={value.className} src={src}>
+    <Container className={props.className} src={src}>
       <Label htmlFor={value.id}>
         <FaCamera/>
         <input type='file' id={value.id} onChange={handleChangeFile} style={{display: 'none'}}/>

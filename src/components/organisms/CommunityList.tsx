@@ -5,7 +5,7 @@ import ImageIcon from '@material-ui/icons/Image'
 import { Axios } from '../../modules/Axios'
 import { Type } from '../../modules/Type'
 
-const CommunityList = () => {
+export const CommunityList = () => {
   const [communities, setCommunities] = React.useState<Type.Community[]>([
     { ID: '1' , Owner: {ID: '1', Name: 'name', Email: 'test@gmail.com'}, Name: 'test'},
     { ID: '2' , Owner: {ID: '1', Name: 'name', Email: 'test@gmail.com'}, Name: 'test'}

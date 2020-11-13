@@ -9,7 +9,7 @@ export interface FormProps {
 
 export const FormContext = React.createContext<FormProps>({})
 
-const Form: React.FC = () => {
+export const Form: React.FC = () => {
   const value = React.useContext(FormContext)
   const list = []
   const items = value.items ? value.items : []
