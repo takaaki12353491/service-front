@@ -12,3 +12,4 @@ export namespace Type {
 	  Description?: string
   }
 }
+export default Type

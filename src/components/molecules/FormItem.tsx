@@ -1,8 +1,10 @@
 import React from 'react'
-import Input, { InputProps } from '../atoms/Input'
-import Heading, { HeadingProps } from '../atoms/Heading'
-import FileButton, { FileButtonProps } from '../atoms/FileButton'
 import styled from 'styled-components'
+import { 
+  Input, InputProps, InputContext,
+  Heading, HeadingProps, HeadingContext,
+} from '../atoms'
+import FileButton, { FileButtonProps, FileButtonContext } from '../atoms/FileButton'
 
 type ItemProps = InputProps | FileButtonProps
 
@@ -16,10 +18,18 @@ export const FormItemContext = React.createContext<FormItemProps>({})
 
 const FormItem: React.FC<FormItemProps> = (props) => {
   const getItem = () => {
-    if (isTextField(props.item)) {
-      return <Input {...props.item}/>
+    if (isInput(props.item)) {
+      return (
+        <InputContext.Provider value={{...props.item}}>
+          <Input/>
+        </InputContext.Provider>
+      )
     } else if (isFileButton(props.item)) {
-      return <FileButton {...props.item}/>
+      return (
+        <FileButtonContext.Provider value={{...props.item}}>
+          <FileButton/>
+        </FileButtonContext.Provider>
+      )
     }
   }
   const item = getItem()
@@ -32,7 +42,7 @@ const FormItem: React.FC<FormItemProps> = (props) => {
 }
 export default FormItem
 
-const isTextField = (item: any): item is InputProps =>
+const isInput = (item: any): item is InputProps =>
   item.name !== undefined
 
 const isFileButton = (item: any): item is FileButtonProps =>

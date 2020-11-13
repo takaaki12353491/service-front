@@ -8,7 +8,7 @@ export interface ButtonProps {
 
 export const ButtonContext = React.createContext<ButtonProps>({})
 
-const Button: React.FC = () => {
+export const Button: React.FC = () => {
   const value = React.useContext(ButtonContext)
   return (
     <button {...value}>

@@ -19,3 +19,4 @@ export namespace Storage {
     export const JWT = 'jwt'
   }
 }
+export default Storage

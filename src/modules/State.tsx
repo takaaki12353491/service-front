@@ -7,3 +7,4 @@ export namespace State {
     return !!user
   }
 }
+export default State

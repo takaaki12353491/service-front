@@ -1,12 +1,19 @@
 import React from 'react'
 
-interface Props {
+export interface ImageProps {
   src: string
   alt?: string
+  className?: string
 }
 
-const Image: React.FC<Props> = (props) => {
+export const ImageContext = React.createContext<ImageProps>({
+  src: ''
+})
+
+export const Image: React.FC = () => {
+  const value = React.useContext(ImageContext)
   return(
-    <img src={props.src} alt={props.alt} />
+    <img {...value}/>
   )
 }
+export default Image

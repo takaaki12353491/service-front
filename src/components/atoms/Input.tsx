@@ -8,9 +8,15 @@ export interface InputProps {
   ref?: any
 }
 
-const Input = React.forwardRef((props: InputProps, ref: any) => {
-  return (
-    <input ref={ref} {...props}/>
-  )
+export const InputContext = React.createContext<InputProps>({
+  name: ''
 })
+
+export const Input: React.FC = () => {
+  const value = React.useContext(InputContext)
+  const ref = React.useRef(value.ref)
+  return (
+    <input ref={ref} {...value}/>
+  )
+}
 export default Input

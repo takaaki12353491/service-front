@@ -1,33 +1,46 @@
 import React from 'react'
 import styled from 'styled-components'
-import { State } from '../../modules/State'
-import URL from '../../consts/URL'
-import Name from '../../consts/Name'
-import Input from '../atoms/Input'
-import Select from '../atoms/Select'
-import Link from '../atoms/Link'
+import { State } from '../../modules'
+import { URL, Name } from '../../consts'
+import {
+  Input, InputContext,
+  Select, SelectContext,
+  Link, LinkContext
+} from '../atoms'
 
 const Header: React.FC = () => {
   return (
     <Container>
-      <HomeLink href='/' text='Service'/>
+      <LinkContext.Provider value={{
+        href: '/', text: 'Service'
+      }}>
+        <HomeLink/>
+      </LinkContext.Provider>
       <Search>
-        <PatternSelect 
-          name={Name.PATTERN}
-          options={[
+        <SelectContext.Provider value={{
+          name: Name.PATTERN,
+          options: [
             { value: 'name', text: 'name' },
             { value: 'tag', text: 'tag' },
-          ]}
-        />
-        <TargetSelect 
-          name={Name.TARGET}
-          options={[
+          ]
+        }}>
+          <PatternSelect/>
+        </SelectContext.Provider>
+        <SelectContext.Provider value={{
+          name: Name.TARGET,
+          options: [
             { value: 'account', text: 'account' },
             { value: 'community', text: 'community' },
             { value: 'project', text: 'project' },
-          ]}  
-        />
-        <Input name={Name.SEARCH} placeholder='search...'/>
+          ], 
+        }}>
+          <TargetSelect/>
+        </SelectContext.Provider>
+        <InputContext.Provider value={{
+          name: Name.SEARCH, placeholder: 'search...'
+        }}>
+          <Input/>
+        </InputContext.Provider>
       </Search>
     </Container>
   )

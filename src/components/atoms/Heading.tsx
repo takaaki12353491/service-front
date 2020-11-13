@@ -10,7 +10,7 @@ export const HeadingContext = React.createContext<HeadingProps>({
   size: 1, text: ''
 })
 
-const Heading: React.FC<HeadingProps> = (props) =>{
+export const Heading: React.FC<HeadingProps> = (props) =>{
   return React.createElement(
     `h${props.size}`,
     {className: props.className},

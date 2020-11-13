@@ -26,3 +26,4 @@ export namespace Axios {
     export const COMMUNITIES = '/communities'
   }
 }
+export default Axios

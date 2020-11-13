@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 export interface OptionProps {
   value: string
@@ -11,9 +10,14 @@ export interface SelectProps {
   options: OptionProps[]
 }
 
-const Select: React.FC<SelectProps> = (props) => {
+export const SelectContext = React.createContext<SelectProps>({
+  name: '', options: [],
+})
+
+export const Select: React.FC = () => {
+  const value = React.useContext(SelectContext)
   const list = []
-  for (const option of props.options) {
+  for (const option of value.options) {
     list.push(
       <option key={option.value} value={option.value}>
         {option.text}
