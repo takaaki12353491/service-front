@@ -4,14 +4,10 @@ import { FaCamera } from 'react-icons/fa'
 
 export interface FileButtonProps {
   id: string
+  className?: string
 }
 
-export const FileButtonContext = React.createContext<FileButtonProps>({
-  id: 'id',
-})
-
-export const FileButton: React.FC<{className?: string}> = (props) => {
-  const value = React.useContext(FileButtonContext)
+export const FileButton: React.FC<FileButtonProps> = (props) => {
   const [ src, setSrc ] = React.useState<string>()
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -25,9 +21,9 @@ export const FileButton: React.FC<{className?: string}> = (props) => {
   }
   return (
     <Container className={props.className} src={src}>
-      <Label htmlFor={value.id}>
+      <Label htmlFor={props.id}>
         <FaCamera/>
-        <input type='file' id={value.id} onChange={handleChangeFile} style={{display: 'none'}}/>
+        <input type='file' id={props.id} onChange={handleChangeFile} style={{display: 'none'}}/>
       </Label>
     </Container>
   )

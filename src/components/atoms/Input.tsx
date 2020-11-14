@@ -6,17 +6,13 @@ export interface InputProps {
   placeholder?: string
   defaultValue?: string
   ref?: any
+  className?: string
 }
 
-export const InputContext = React.createContext<InputProps>({
-  name: ''
-})
-
-export const Input: React.FC<{className?: string}> = (props) => {
-  const value = React.useContext(InputContext)
-  const ref = React.useRef(value.ref)
+export const Input: React.FC<InputProps> = (props) => {
+  const ref = React.useRef(props.ref)
   return (
-    <input className={props.className} ref={ref} {...value}/>
+    <input ref={ref} {...props}/>
   )
 }
 export default Input

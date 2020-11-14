@@ -8,16 +8,12 @@ export interface OptionProps {
 export interface SelectProps {
   name: string
   options: OptionProps[]
+  className?: string
 }
 
-export const SelectContext = React.createContext<SelectProps>({
-  name: '', options: [],
-})
-
-export const Select: React.FC<{className?: string}> = (props) => {
-  const value = React.useContext(SelectContext)
+export const Select: React.FC<SelectProps> = (props) => {
   const list = []
-  for (const option of value.options) {
+  for (const option of props.options) {
     list.push(
       <option key={option.value} value={option.value}>
         {option.text}
@@ -25,7 +21,7 @@ export const Select: React.FC<{className?: string}> = (props) => {
     )
   }
   return (
-    <select className={props.className}>
+    <select {...props}>
       {list}
     </select>
   )

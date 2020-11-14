@@ -3,18 +3,14 @@ import React from 'react'
 export interface HeadingProps {
   size: 1 | 2 | 3 | 4 | 5 | 6
   text: string
+  className?: string
 }
 
-export const HeadingContext = React.createContext<HeadingProps>({
-  size: 1, text: ''
-})
-
-export const Heading: React.FC<{className?: string}> = (props) => {
-  const value = React.useContext(HeadingContext)
+export const Heading: React.FC<HeadingProps> = (props) => {
   return React.createElement(
-    `h${value.size}`,
+    `h${props.size}`,
     {className: props.className},
-    value.text
+    props.text
   )
 }
 export default Heading

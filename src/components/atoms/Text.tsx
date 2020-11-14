@@ -2,17 +2,13 @@ import React from 'react'
 
 export interface TextProps {
   text: string
+  className?: string
 }
 
-export const TextContext = React.createContext<TextProps>({
-  text: ''
-})
-
-export const Text: React.FC<{className?: string}> = (props) => {
-  const value = React.useContext(TextContext)
+export const Text: React.FC<TextProps> = (props) => {
   return (
-    <p className={props.className}>
-      {value.text}
+    <p {...props}>
+      {props.text}
     </p>
   )
 }
