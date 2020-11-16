@@ -26,7 +26,7 @@ const Login: React.FC = () => {
         if (res.status === 200) {
           Storage.Set(Storage.Key.JWT, res.data.JWT)
           Storage.Set(Storage.Key.USER, res.data.User)
-          history.push('/')
+          history.push(URL.HOME)
         } else {
           alert('failed')
         }

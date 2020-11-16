@@ -11,7 +11,14 @@ export interface InputProps {
 
 export const Input: React.FC<InputProps> = (props) => {
   return (
-    <input ref={props.inputRef} {...props}/>
+    <input 
+      name={props.name}
+      type={props.type}
+      placeholder={props.placeholder}
+      defaultValue={props.defaultValue}
+      ref={props.inputRef}
+      className={props.className}
+    />
   )
 }
 export default Input
