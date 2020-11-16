@@ -1,15 +1,10 @@
 import React from 'react'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { Container, List, ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core'
-import ImageIcon from '@material-ui/icons/Image'
+import styled from 'styled-components'
 import { Axios } from '../../modules/Axios'
 import { Type } from '../../modules/Type'
 
 export const CommunityList = () => {
-  const [communities, setCommunities] = React.useState<Type.Community[]>([
-    { ID: '1' , Owner: {ID: '1', Name: 'name', Email: 'test@gmail.com'}, Name: 'test'},
-    { ID: '2' , Owner: {ID: '1', Name: 'name', Email: 'test@gmail.com'}, Name: 'test'}
-  ])
+  const [communities, setCommunities] = React.useState<Type.Community[]>([])
 
   React.useEffect(() => {
     Axios.Default
@@ -21,30 +16,13 @@ export const CommunityList = () => {
   }, [])
 
   const list = []
-  for (const community of communities) {
-    list.push(
-      <ListItem key={community.ID} button>
-        <ListItemAvatar>
-          <Avatar>
-            <ImageIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary={community.Name} secondary={community.Owner.Name} />
-      </ListItem>
-    )
-  }
 
   return (
-    <Container maxWidth='sm'>
-      <List component='nav'>
-        {list}
-      </List>
+    <Container>
     </Container>
   )
 }
 export default CommunityList
 
-const useStyles = makeStyles(() =>
-  createStyles({
-  }),
-)
+const Container = styled.div`
+`
