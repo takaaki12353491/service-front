@@ -1,35 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 import { 
-  Input, InputProps, InputContext,
-  Heading, HeadingProps, HeadingContext,
+  Input, InputProps,
+  Heading, HeadingProps,
+  FileButton, FileButtonProps,
   Text, 
 } from '../atoms'
-import FileButton, { FileButtonProps, FileButtonContext } from '../atoms/FileButton'
-
-type ItemProps = InputProps | FileButtonProps
 
 export interface FormItemProps {
   heading? :HeadingProps
-  item?: ItemProps
+  item: InputProps | FileButtonProps
   errMsg?: string
 }
 
-export const FormItemContext = React.createContext<FormItemProps>({})
-
-export const FormItem: React.FC = (props) => {
+export const FormItem: React.FC<FormItemProps> = (props) => {
+  const getItem = () => {
+    if (isInput(props.item)) {
+      return <Input {...props.item}/>
+    } else if (isFileButton(props.item)) {
+      return <FileButton {...props.item}/>
+    }
+  }
+  const item = getItem()
   return(
     <Container>
-      <Heading/>
-      {props.children}
-      <ErrorText/>
+      {props.heading && <Heading {...props.heading}/>}
+      {item}
+      {props.errMsg && <ErrorText text={props.errMsg}/>}
     </Container>
   )
 }
 export default FormItem
 
 const isInput = (item: any): item is InputProps =>
-  item.name !== undefined
+  item.placeholder !== undefined
 
 const isFileButton = (item: any): item is FileButtonProps =>
   item.id !== undefined

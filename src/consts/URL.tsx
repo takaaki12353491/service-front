@@ -1,4 +1,5 @@
 export namespace URL {
+  export const HOME = '/'
   export const ID = '/:id'
   export const LOGIN = '/login'
   export const SIGNUP = '/signup'

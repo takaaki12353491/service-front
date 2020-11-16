@@ -2,11 +2,8 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import Auth from '../templates/Auth'
-import { ButtonContext, HeadingContext } from '../atoms'
-import { NavigationContext } from '../molecules'
-import { FormContext } from '../organisms'
 import { Axios, Type, Storage } from '../../modules'
-import { Name } from '../../consts'
+import { Name, URL } from '../../consts'
 
 const Login: React.FC = () => {
   const history = useHistory()
@@ -18,7 +15,7 @@ const Login: React.FC = () => {
     identity: string
     password: string
   }
-  const { register, handleSubmit } = useForm<FormData>()
+  const { register, handleSubmit, errors } = useForm<FormData>()
   const onSubmit = handleSubmit((value) => {
     const formData = new FormData()
     formData.append(Name.IDENTITY, value.identity)
@@ -39,42 +36,43 @@ const Login: React.FC = () => {
       })
   })
   return(
-    <FormContext.Provider value={{
-      submit: onSubmit,
-      items: [
-        { 
-          item: {
-            name: Name.IDENTITY, placeholder: 'name or email', defaultValue: '',
-            ref: register(),
-          }
-        },
-        { 
-          item: {
-            name: Name.PASSWORD, placeholder: 'password', type: 'password', defaultValue: '',
-            ref: register(),
-          }
-        },
-      ]
-    }}>
-      <NavigationContext.Provider value={{
-        items: [
-          { href:'/', text:'Home' },
-          { href:'/signup', text:'Signup' },
-        ]
-      }}>
-        <ButtonContext.Provider value={{
-          type: 'submit',
-          text: 'Login'
-        }}>
-          <HeadingContext.Provider value={{
-            size: 3,
-            text: 'Login'
-          }}>
-            <Auth/>
-          </HeadingContext.Provider>
-        </ButtonContext.Provider>
-      </NavigationContext.Provider>
-    </FormContext.Provider>
+            <Auth
+              heading={{ text: 'Login' }}
+              form={{
+                submit: onSubmit,
+                items: [
+                  { 
+                    heading: { text: 'Name' },
+                    item: {
+                      name: Name.NAME, 
+                      placeholder: 'name or email',
+                      inputRef: register({
+                        required: 'Name or email is required'
+                      }),
+                    },
+                    errMsg: errors.identity?.message
+                  },
+                  { 
+                    heading: { text: 'Password' },
+                    item: {
+                      name: Name.NAME, 
+                      placeholder: 'password',
+                      inputRef: register({
+                        required: 'Password is required'
+                      }),
+                    },
+                    errMsg: errors.password?.message
+                  },
+                ],
+                button: { text: 'Login' },
+              }}
+              navigation={{
+                items: [
+                  { href: URL.HOME , text: 'Home' },
+                  { href: URL.SIGNUP , text: 'Sign up' },
+                ],
+              }}
+            />
   )
 }
 export default Login

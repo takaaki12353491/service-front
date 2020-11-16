@@ -2,45 +2,29 @@ import React from 'react'
 import styled from 'styled-components'
 import { State } from '../../modules'
 import { URL, Name } from '../../consts'
-import {
-  Input, InputContext,
-  Select, SelectContext,
-  Link, LinkContext
-} from '../atoms'
+import { Input, Select, Link } from '../atoms'
 
 export const Header: React.FC = () => {
   return (
     <Container>
-      <LinkContext.Provider value={{
-        href: '/', text: 'Service'
-      }}>
-        <HomeLink/>
-      </LinkContext.Provider>
+      <HomeLink href='/' text='Service'/>
       <Search>
-        <SelectContext.Provider value={{
-          name: Name.PATTERN,
-          options: [
+        <PatternSelect
+          name={Name.PATTERN}
+          options={[
             { value: 'name', text: 'name' },
             { value: 'tag', text: 'tag' },
-          ]
-        }}>
-          <PatternSelect/>
-        </SelectContext.Provider>
-        <SelectContext.Provider value={{
-          name: Name.TARGET,
-          options: [
+          ]}
+        />
+        <TargetSelect
+          name={Name.TARGET}
+          options={[
             { value: 'account', text: 'account' },
             { value: 'community', text: 'community' },
             { value: 'project', text: 'project' },
-          ], 
-        }}>
-          <TargetSelect/>
-        </SelectContext.Provider>
-        <InputContext.Provider value={{
-          name: Name.SEARCH, placeholder: 'search...'
-        }}>
-          <Input/>
-        </InputContext.Provider>
+          ]} 
+        />
+        <Input name={Name.SEARCH} placeholder='search...'/>
       </Search>
     </Container>
   )

@@ -1,10 +1,8 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
-import { ButtonContext, HeadingContext } from '../atoms'
-import { NavigationContext } from '../molecules'
-import { FormContext } from '../organisms'
 import Auth from '../templates/Auth'
-import { Axios } from '../../modules/Axios'
+import { Axios } from '../../modules'
+import { Name, URL } from '../../consts'
 
 const Signup: React.FC = () => {
   type FormData = {
@@ -28,57 +26,55 @@ const Signup: React.FC = () => {
       })
   })
   return(
-    <FormContext.Provider value={{
-      submit: onSubmit,
-      items: [
-        { 
-          item: {
-            name: 'name', placeholder: 'name', defaultValue: '',
-            ref: register({ required: 'required', maxLength: 16 }), 
-          },
-          errMsg: errors.name?.message,
-        },
-        { 
-          item: {
-            name: 'email', placeholder: 'email', type: 'text', defaultValue: '',
-            ref: register({ 
-              required: 'required',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "invalid email address"
-              }
-            }),
-          },
-          errMsg: errors.email?.message
-        },
-        { 
-          item: {
-            name: 'password', placeholder: 'password', type: 'password', defaultValue: '',
-            ref: register({ required: 'required' }),
-          },
-          errMsg: errors.password?.message
-        },
-      ]
-    }}>
-      <NavigationContext.Provider value={{
+    <Auth
+      heading={{ text: 'Sign up' }}
+      form={{
+        submit: onSubmit,
         items: [
-          { href:'/', text:'Home' },
-          { href:'/login', text:'Login' },
-        ]
-      }}>
-        <ButtonContext.Provider value={{
-          type: 'submit',
-          text: 'Sign Up',
-        }}>
-          <HeadingContext.Provider value={{
-            size: 3,
-            text: 'Sign Up',
-          }}>
-            <Auth/>
-          </HeadingContext.Provider>
-        </ButtonContext.Provider>
-      </NavigationContext.Provider>
-    </FormContext.Provider>
+          { 
+            heading: { text: 'Name' },
+            item: {
+              name: Name.NAME, 
+              placeholder: 'name',
+              inputRef: register({
+                required: 'Name is required'
+              }),
+            },
+            errMsg: errors.name?.message
+          },
+          { 
+            heading: { text: 'Email' },
+            item: {
+              name: Name.EMAIL, 
+              placeholder: 'email',
+              inputRef: register({
+                required: 'Email is required'
+              }),
+            },
+            errMsg: errors.email?.message
+          },
+          { 
+            heading: { text: 'Password' },
+            item: {
+              type: 'password',
+              name: Name.PASSWORD, 
+              placeholder: 'password',
+              inputRef: register({
+                required: 'Password is required'
+              }),
+            },
+            errMsg: errors.password?.message
+          },
+        ],
+        button: { text: 'Sign up' },
+      }}
+      navigation={{
+        items: [
+          { href: URL.HOME , text: 'Home' },
+          { href: URL.LOGIN , text: 'Login' },
+        ],
+      }}
+    />
   )
 }
 export default Signup

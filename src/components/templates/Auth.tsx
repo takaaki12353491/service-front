@@ -1,17 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import Heading from '../atoms/Heading'
-import Form from '../organisms/Form'
-import Navigation from '../molecules/Navigation'
+import { Heading, HeadingProps } from '../atoms'
+import { Navigation, NavigationProps } from '../molecules'
+import { Form, FormProps } from '../organisms/Form'
 
-export const Auth: React.FC = () => {
+export interface AuthProps {
+  heading: HeadingProps
+  form: FormProps
+  navigation: NavigationProps
+}
+
+export const Auth: React.FC<AuthProps> = (props) => {
   return (
     <Container>
-      <Heading/>
+      <Heading {...props.heading}/>
       <hr/>
-      <Form/>
-      <Navigation/>
+      <Form {...props.form}/>
+      <hr/>
+      <Navigation {...props.navigation}/>
     </Container>
+      
   ) 
 }
 export default Auth

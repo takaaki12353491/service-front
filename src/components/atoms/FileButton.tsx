@@ -4,6 +4,7 @@ import { FaCamera } from 'react-icons/fa'
 
 export interface FileButtonProps {
   id: string
+  name: string
   className?: string
 }
 
@@ -23,7 +24,7 @@ export const FileButton: React.FC<FileButtonProps> = (props) => {
     <Container className={props.className} src={src}>
       <Label htmlFor={props.id}>
         <FaCamera/>
-        <input type='file' id={props.id} onChange={handleChangeFile} style={{display: 'none'}}/>
+        <Input type='file' id={props.id} name={props.name} onChange={handleChangeFile}/>
       </Label>
     </Container>
   )
@@ -38,4 +39,8 @@ const Container = styled.div<{
 
 const Label = styled.label`
   cursor: pointer;
+`
+
+const Input = styled.input`
+  display: none;
 `

@@ -1,26 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link, LinkProps, LinkContext } from '../atoms'
+import { Link, LinkProps } from '../atoms'
 
 export interface NavigationProps {
-  items?: LinkProps[]
+  items: LinkProps[]
+  className?: string
 }
 
-export const NavigationContext = React.createContext<NavigationProps>({})
-
-export const Navigation: React.FC = () => {
-  const value = React.useContext(NavigationContext)
+export const Navigation: React.FC<NavigationProps> = (props) => {
   const list = []
-  const items = value.items ? value.items : [] 
-  for (const item of items) {
+  for (const item of props.items) {
     list.push(
-      <LinkContext.Provider value={{...item}}>
-        <Link/>
-      </LinkContext.Provider>
+      <Link key={item.href} {...item}/>
     )
   }
   return(
-    <Container>
+    <Container className={props.className}>
       {list}
     </Container>
   )

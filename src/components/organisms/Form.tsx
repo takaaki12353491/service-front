@@ -1,28 +1,30 @@
 import React from 'react'
-import FormItem, { FormItemProps } from '../molecules/FormItem'
-import Button from '../atoms/Button'
+import { Button, ButtonProps } from '../atoms'
+import { FormItem, FormItemProps } from '../molecules'
 
 export interface FormProps {
-  submit?: () => {}
-  items?: FormItemProps[]
+  submit: () => {}
+  items: FormItemProps[]
+  button: ButtonProps
+  className?: string
 }
 
-export const FormContext = React.createContext<FormProps>({})
-
-export const Form: React.FC = () => {
-  const value = React.useContext(FormContext)
+export const Form: React.FC<FormProps> = (props) => {
   const list = []
-  const items = value.items ? value.items : []
-  for (const item of items) {
+  for (const item of props.items) {
     list.push(
-      <FormItem {...item} key={list.length}/>
+      <FormItem key={list.length} {...item}/>
     )
   }
   return (
-    <form onSubmit={value.submit}>
+    <form onSubmit={props.submit}>
       {list}
-      <Button/>
+      <Button {...props.button}/>
     </form>
   )
 }
 export default Form
+
+Button.defaultProps={
+  type: 'submit'
+}

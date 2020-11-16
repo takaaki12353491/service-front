@@ -5,14 +5,17 @@ export interface InputProps {
   type?: 'text' | 'password'
   placeholder?: string
   defaultValue?: string
-  ref?: any
+  inputRef?: any
   className?: string
 }
 
 export const Input: React.FC<InputProps> = (props) => {
-  const ref = React.useRef(props.ref)
   return (
-    <input ref={ref} {...props}/>
+    <input ref={props.inputRef} {...props}/>
   )
 }
 export default Input
+
+Input.defaultProps={
+  type: 'text'
+}

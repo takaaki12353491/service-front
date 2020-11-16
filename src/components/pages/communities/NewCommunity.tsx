@@ -1,8 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import Form from '../../organisms/Form'
 import Base from '../../templates/Base'
-import { ButtonContext } from '../../atoms/Button'
-import Form, { FormContext } from '../../organisms/Form'
 
 const NewCommunity: React.FC = () => {
   type FormData = {
@@ -15,40 +14,14 @@ const NewCommunity: React.FC = () => {
   })
   return (
     <Base>
-      <FormContext.Provider value={{
-        submit: onSubmit,
-        items: [
-          {
-            item: {
-              id: 'header',
-            }
-          },
-          {
-            item: {
-              id: 'icon'
-            }
-          },
-          {
-            item: {
-              name: 'name', placeholder: 'name',
-              ref: register(),
-            }
-          },
-          {
-            item: {
-              name: 'description', placeholder: 'description',
-              ref: register(),
-            }
-          },
-        ]
-      }}>
-        <ButtonContext.Provider value={{
+      <Form
+        submit={onSubmit}
+        items={[]}
+        button={{
           type: 'submit',
-          text: 'Submit'
-        }}>
-          <Form/>
-        </ButtonContext.Provider>
-      </FormContext.Provider>
+          text: 'Create'
+        }}
+      />
     </Base>    
   )
 }
