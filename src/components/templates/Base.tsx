@@ -2,7 +2,7 @@ import React from 'react'
 import { Header, Footer, SideMenu } from '../organisms'
 import styled from 'styled-components'
 
-const Base: React.FC = (props) => {
+export const Base: React.FC = (props) => {
   return (
     <>
       <Header/>
