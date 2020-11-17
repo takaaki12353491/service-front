@@ -17,7 +17,7 @@ export const Form: React.FC<FormProps> = (props) => {
     )
   }
   return (
-    <form onSubmit={props.submit}>
+    <form onSubmit={props.submit} className={props.className}>
       {list}
       <CVButton {...props.button}/>
     </form>

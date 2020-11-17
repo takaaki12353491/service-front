@@ -22,7 +22,6 @@ export const CVButton = styled(Button)`
   height: 40px;
   color: #fff;
   width: 200px;
-  margin 40px auto 0;
   cursor: pointer;
   border: 2px solid #5AA72A;
   background-color: #5AA72A;

@@ -15,7 +15,7 @@ export const Auth: React.FC<AuthProps> = (props) => {
     <Container>
       <Heading {...props.heading}/>
       <hr/>
-      <Form {...props.form}/>
+      <AuthForm {...props.form}/>
       <hr/>
       <ButtomNavigation {...props.navigation}/>
     </Container>
@@ -28,6 +28,16 @@ const Container = styled.div`
   width: 500px;
   margin: 50px auto 0 auto;
   text-align: center;
+`
+
+const AuthForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  height: 300px;
+  padding: 0 100px;
 `
 
 const ButtomNavigation = styled(Navigation)`
