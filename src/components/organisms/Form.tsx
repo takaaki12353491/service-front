@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ButtonProps } from '../atoms'
+import { CVButton, ButtonProps } from '../atoms'
 import { FormItem, FormItemProps } from '../molecules'
 
 export interface FormProps {
@@ -19,12 +19,12 @@ export const Form: React.FC<FormProps> = (props) => {
   return (
     <form onSubmit={props.submit}>
       {list}
-      <Button {...props.button}/>
+      <CVButton {...props.button}/>
     </form>
   )
 }
 export default Form
 
-Button.defaultProps={
+CVButton.defaultProps={
   type: 'submit'
 }

@@ -32,7 +32,7 @@ export const Signup: React.FC = () => {
         submit: onSubmit,
         items: [
           { 
-            heading: { text: 'Name' },
+            label: 'Name',
             item: {
               name: Name.NAME, 
               placeholder: 'name',
@@ -43,7 +43,7 @@ export const Signup: React.FC = () => {
             errMsg: errors.name?.message
           },
           { 
-            heading: { text: 'Email' },
+            label: 'Email',
             item: {
               name: Name.EMAIL, 
               placeholder: 'email',
@@ -54,7 +54,7 @@ export const Signup: React.FC = () => {
             errMsg: errors.email?.message
           },
           { 
-            heading: { text: 'Password' },
+            label: 'Password',
             item: {
               type: 'password',
               name: Name.PASSWORD, 

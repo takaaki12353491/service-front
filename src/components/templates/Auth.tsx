@@ -17,7 +17,7 @@ export const Auth: React.FC<AuthProps> = (props) => {
       <hr/>
       <Form {...props.form}/>
       <hr/>
-      <Navigation {...props.navigation}/>
+      <ButtomNavigation {...props.navigation}/>
     </Container>
       
   ) 
@@ -28,4 +28,10 @@ const Container = styled.div`
   width: 500px;
   margin: 50px auto 0 auto;
   text-align: center;
+`
+
+const ButtomNavigation = styled(Navigation)`
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px 0 0 0;
 `

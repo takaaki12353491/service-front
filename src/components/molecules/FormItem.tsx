@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { 
+  Label,
   Input, InputProps,
-  Heading, HeadingProps,
   FileButton, FileButtonProps,
   Text, 
 } from '../atoms'
 
 export interface FormItemProps {
-  heading? :HeadingProps
+  label? :string
   item: InputProps | FileButtonProps
   errMsg?: string
 }
@@ -22,9 +22,9 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
     }
   }
   const item = getItem()
-  return(
+  return (
     <Container>
-      {props.heading && <Heading {...props.heading}/>}
+      {props.label && <FormLabel text={props.label} htmlFor={props.item.name}/>}
       {item}
       {props.errMsg && <ErrorText text={props.errMsg}/>}
     </Container>
@@ -39,9 +39,11 @@ const isFileButton = (item: any): item is FileButtonProps =>
   item.id !== undefined
 
 const Container = styled.div`
-  flex-grow: 1;
-  margin: 20px 0;
   text-align: center;
+`
+
+const FormLabel = styled(Label)`
+  display: block;
 `
 
 const ErrorText = styled(Text)`

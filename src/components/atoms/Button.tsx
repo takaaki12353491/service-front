@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset'
@@ -14,3 +15,20 @@ export const Button: React.FC<ButtonProps> = (props) => {
   )
 }
 export default Button
+
+export const CVButton = styled(Button)`
+  display: block;
+  font-size: 14px;
+  height: 40px;
+  color: #fff;
+  width: 200px;
+  margin 40px auto 0;
+  cursor: pointer;
+  border: 2px solid #5AA72A;
+  background-color: #5AA72A;
+  transition: 0.3s;
+  &:hover {
+    background-color: #fff;
+    color: #5AA72A;
+  }
+`

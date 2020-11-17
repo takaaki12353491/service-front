@@ -42,7 +42,7 @@ export const Login: React.FC = () => {
         submit: onSubmit,
         items: [
           { 
-            heading: { text: 'Name' },
+            label: 'Name',
             item: {
               name: Name.NAME, 
               placeholder: 'name or email',
@@ -53,7 +53,7 @@ export const Login: React.FC = () => {
             errMsg: errors.identity?.message
           },
           { 
-            heading: { text: 'Password' },
+            label: 'Password',
             item: {
               name: Name.PASSWORD, 
               placeholder: 'password',
