@@ -1,8 +1,9 @@
 import React from 'react'
 import { Route, RouteProps, Redirect } from 'react-router-dom'
-import { State } from '../modules/State'
+import { URL } from '../consts'
+import { State } from '../modules'
 
-const RestrictedRoute = (props: RouteProps) => {
-  return State.isAuthenticated() ? <Redirect to='/'/> : <Route {...props}/>
+export const RestrictedRoute: React.FC<RouteProps> = (props) => {
+  return State.isAuthenticated() ? <Redirect to={URL.HOME}/> : <Route {...props}/>
 }
 export default RestrictedRoute

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import Form from '../../organisms/Form'
 import Base from '../../templates/Base'
 
-const NewCommunity: React.FC = () => {
+export const NewCommunity: React.FC = () => {
   type FormData = {
     name: string
     description: string

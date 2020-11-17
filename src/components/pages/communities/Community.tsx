@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Axios } from '../../../modules/Axios'
 import { Type } from '../../../modules/Type'
 
-const Community = () => {
+export const Community: React.FC = () => {
   const { id } = useParams()
   const [ community, setCommunity ] = React.useState<Type.Community>({
     ID: '', Owner: { ID: '', Name: '', Email: ''}, Name: '',

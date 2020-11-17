@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Profile = () => {
-  return(
+export const Profile: React.FC = () => {
+  return (
     <div>
 
     </div>

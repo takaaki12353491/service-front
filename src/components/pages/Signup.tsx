@@ -4,7 +4,7 @@ import Auth from '../templates/Auth'
 import { Axios } from '../../modules'
 import { Name, URL } from '../../consts'
 
-const Signup: React.FC = () => {
+export const Signup: React.FC = () => {
   type FormData = {
     name: string
     email: string
@@ -13,11 +13,11 @@ const Signup: React.FC = () => {
   const { register, handleSubmit, errors } = useForm<FormData>()
   const onSubmit = handleSubmit((value) => {
     const formData = new FormData()
-    formData.append('name', value.name)
-    formData.append('email', value.email)
-    formData.append('password', value.password)
+    formData.append(Name.NAME, value.name)
+    formData.append(Name.EMAIL, value.email)
+    formData.append(Name.PASSWORD, value.password)
     Axios.MPFD
-      .post('/signup', formData)
+      .post(Axios.URL.SIGNUP, formData)
       .then((res) => {
         res.status === 200 ? alert('Your registration is complete') : alert(res.data)
       })
@@ -25,7 +25,7 @@ const Signup: React.FC = () => {
         alert('error')
       })
   })
-  return(
+  return (
     <Auth
       heading={{ text: 'Sign up' }}
       form={{
