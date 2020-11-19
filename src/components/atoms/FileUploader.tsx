@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaCamera } from 'react-icons/fa'
 
-export interface FileButtonProps {
+export interface FileUploaderProps {
   id: string
   name: string
   className?: string
 }
 
-export const FileButton: React.FC<FileButtonProps> = (props) => {
+export const FileUploader: React.FC<FileUploaderProps> = (props) => {
   const [ src, setSrc ] = React.useState<string>()
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -29,7 +29,7 @@ export const FileButton: React.FC<FileButtonProps> = (props) => {
     </Container>
   )
 }
-export default FileButton
+export default FileUploader
 
 const Container = styled.div<{
   src?: string

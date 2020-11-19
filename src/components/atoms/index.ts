@@ -1,5 +1,5 @@
 export * from './Button'
-export * from './FileButton'
+export * from './FileUploader'
 export * from './Heading'
 export * from './Image'
 export * from './Input'

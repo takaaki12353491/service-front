@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { 
   Label,
   Input, InputProps,
-  FileButton, FileButtonProps,
+  FileUploader, FileUploaderProps,
   Text, 
 } from '../atoms'
 
 export interface FormItemProps {
   label? :string
-  item: InputProps | FileButtonProps
+  item: InputProps | FileUploaderProps
   errMsg?: string
 }
 
@@ -17,8 +17,8 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
   const getItem = () => {
     if (isInput(props.item)) {
       return <Input {...props.item}/>
-    } else if (isFileButton(props.item)) {
-      return <FileButton {...props.item}/>
+    } else if (isFileUploader(props.item)) {
+      return <FileUploader {...props.item}/>
     }
   }
   const item = getItem()
@@ -35,7 +35,7 @@ export default FormItem
 const isInput = (item: any): item is InputProps =>
   item.placeholder !== undefined
 
-const isFileButton = (item: any): item is FileButtonProps =>
+const isFileUploader = (item: any): item is FileUploaderProps =>
   item.id !== undefined
 
 const Container = styled.div`
