@@ -44,12 +44,12 @@ export const FileUploader: React.FC<FileUploaderProps> = (props) => {
 }
 export default FileUploader
 
-export const Header = styled(FileUploader)`
+export const HeaderUploader = styled(FileUploader)`
   width: 600px;
   height: 200px;
 `
 
-export const Icon = styled(FileUploader)`
+export const IconUploader = styled(FileUploader)`
   width: 120px;
   height: 120px;
   border-radius: 50%;
