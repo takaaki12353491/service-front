@@ -44,7 +44,7 @@ export const Login: React.FC = () => {
           { 
             label: 'Name',
             item: {
-              name: Name.NAME, 
+              name: Name.IDENTITY, 
               placeholder: 'name or email',
               inputRef: register({
                 required: 'Name or email is required'
