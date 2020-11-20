@@ -20,10 +20,12 @@ export default Base
 
 const Middle = styled.div`
   display: flex;
-  width: 100%;
   height: 100%;
-  padding: 20px;
+  margin: 20px;
 `
 
 const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `
