@@ -39,7 +39,6 @@ const isFileUploader = (item: any): item is FileUploaderProps =>
   item.id !== undefined
 
 const Container = styled.div`
-  text-align: center;
 `
 
 const FormLabel = styled(Label)`
