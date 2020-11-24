@@ -16,12 +16,12 @@ export const Login: React.FC = () => {
     password: string
   }
   const { register, handleSubmit, errors } = useForm<FormData>()
-  const onSubmit = handleSubmit((value) => {
-    const formData = new FormData()
-    formData.append(Name.IDENTITY, value.identity)
-    formData.append(Name.PASSWORD, value.password)
+  const onSubmit = handleSubmit(value => {
+    const data = new FormData()
+    data.append(Name.IDENTITY, value.identity)
+    data.append(Name.PASSWORD, value.password)
     Axios.MPFD
-      .post(Axios.URL.LOGIN, formData)
+      .post(Axios.URL.LOGIN, data)
       .then((res: Axios.Response<Response>) => {
         if (res.status === 200) {
           Storage.Set(Storage.Key.JWT, res.data.JWT)
