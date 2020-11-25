@@ -32,7 +32,14 @@ export const FileUploader: React.FC<FileUploaderProps> = (props) => {
     <Container className={props.className} src={src}>
       <Label htmlFor={props.name}>
         <FaCamera/>
-        <Input type='file' id={props.name} name={props.name} ref={props.uploaderRef} onChange={handleChangeFile}/>
+        <Input 
+          type='file' 
+          accept='image/jpeg,image/png' 
+          id={props.name} 
+          name={props.name} 
+          ref={props.uploaderRef} 
+          onChange={handleChangeFile}
+        />
       </Label>
       {src &&
         <CancelLabel onClick={handleClear}>
