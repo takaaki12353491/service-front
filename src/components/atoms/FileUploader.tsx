@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { FaCamera, FaTimes } from 'react-icons/fa'
 
 export interface FileUploaderProps {
-  id: string
   name: string
+  uploaderRef?: any
   className?: string
 }
 
@@ -24,15 +24,15 @@ export const FileUploader: React.FC<FileUploaderProps> = (props) => {
     reader.readAsDataURL(files[0])
   }
   const handleClear = () => {
-    const obj = document.getElementById(props.id) as HTMLInputElement
+    const obj = document.getElementById(props.name) as HTMLInputElement
     obj.value = ''
     setSrc(undefined)
   }
   return (
     <Container className={props.className} src={src}>
-      <Label htmlFor={props.id}>
+      <Label htmlFor={props.name}>
         <FaCamera/>
-        <Input type='file' id={props.id} name={props.name} onChange={handleChangeFile}/>
+        <Input type='file' id={props.name} name={props.name} ref={props.uploaderRef} onChange={handleChangeFile}/>
       </Label>
       {src &&
         <CancelLabel onClick={handleClear}>
