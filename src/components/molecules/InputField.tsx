@@ -11,7 +11,7 @@ export interface InputFieldProps {
 export const InputField: React.FC<InputFieldProps> = (props) => {
   return (
     <Container className={props.className}>
-      {props.label && <FormLabel text={props.label}/>}
+      {props.label && <InputLabel text={props.label}/>}
       {props.children}
       {props.errMsg && <ErrorText text={props.errMsg}/>}
     </Container>
@@ -22,7 +22,7 @@ export default InputField
 const Container = styled.div`
 `
 
-const FormLabel = styled(Label)`
+const InputLabel = styled(Label)`
   display: block;
 `
 

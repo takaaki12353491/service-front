@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaCamera, FaTimes } from 'react-icons/fa'
 
-export interface FileUploaderProps {
+export interface ImageUploaderProps {
   name: string
   uploaderRef?: any
   className?: string
 }
 
-export const FileUploader: React.FC<FileUploaderProps> = (props) => {
+export const ImageUploader: React.FC<ImageUploaderProps> = (props) => {
   const [ src, setSrc ] = React.useState<string>()
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -49,14 +49,14 @@ export const FileUploader: React.FC<FileUploaderProps> = (props) => {
     </Container>
   )
 }
-export default FileUploader
+export default ImageUploader
 
-export const HeaderUploader = styled(FileUploader)`
+export const HeaderUploader = styled(ImageUploader)`
   width: 600px;
   height: 200px;
 `
 
-export const IconUploader = styled(FileUploader)`
+export const IconUploader = styled(ImageUploader)`
   width: 120px;
   height: 120px;
   border-radius: 50%;
