@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Axios } from '../../../modules/Axios'
-import { Type } from '../../../modules/Type'
+import { Axios, Type } from '../../../modules'
+import Base from '../../templates/Base'
 
 export const Community: React.FC = () => {
   const { id } = useParams()
@@ -15,9 +15,9 @@ export const Community: React.FC = () => {
     })
     .catch()
   return (
-    <div>
+    <Base>
       <p>{community.Name}</p>
-    </div>
+    </Base>
   )
 }
 export default Community
