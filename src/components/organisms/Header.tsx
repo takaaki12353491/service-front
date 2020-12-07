@@ -56,11 +56,6 @@ const Container = styled.header`
 
 const HeaderLink = styled(Link)`
   margin: 0 10px;
-  color: white;
-  text-decoration: none;
-  &:hover {
-    color: gray;
-  }
 `
 
 const Search = styled.div`

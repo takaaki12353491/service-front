@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export interface LinkProps {
   text: string
@@ -7,9 +8,17 @@ export interface LinkProps {
 }
 export const Link: React.FC<LinkProps> = (props) => {
   return (
-    <a {...props}>
+    <A {...props}>
       {props.text}
-    </a>
+    </A>
   )
 }
 export default Link
+
+const A = styled.a`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: gray;
+  }
+`
