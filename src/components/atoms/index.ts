@@ -1,3 +1,4 @@
+export * from './Avator'
 export * from './Button'
 export * from './ImageUploader'
 export * from './Heading'

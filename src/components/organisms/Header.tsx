@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Input, Select, Link } from '../atoms'
+import { Input, Select, Link, Avator } from '../atoms'
 import { State } from '../../modules'
 import { URL, Name } from '../../consts'
 
@@ -24,11 +24,19 @@ export const Header: React.FC = () => {
             { value: 'project', text: 'project' },
           ]} 
         />
-        <Input name={Name.SEARCH} placeholder='search...'/>
+        <SearchBar name={Name.SEARCH} placeholder='search...'/>
       </Search>
       <Auth>
-        <HeaderLink href={URL.SIGNUP} text='Sign up'/>
-        <HeaderLink href={URL.LOGIN} text='Login'/>
+        {
+          State.isAuthenticated() ?
+          <>
+            <UserIcon>test</UserIcon>
+          </> :
+          <>
+            <HeaderLink href={URL.SIGNUP} text='Sign up'/>
+            <HeaderLink href={URL.LOGIN} text='Login'/>
+          </>
+        }
       </Auth>
     </Container>
   )
@@ -68,4 +76,9 @@ const SearchBar = styled(Input)`
 `
 
 const Auth = styled.div`
+`
+
+const UserIcon = styled(Avator)`
+  width: 30px;
+  height: 30px;
 `
