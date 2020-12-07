@@ -69,6 +69,7 @@ const Container = styled.div<{
   justify-content: center;
   align-items: center;
   background: ${({src}) => src ? `url(${src})` : 'gray'};
+  background-size: cover;
 `
 
 const Label = styled.label`
