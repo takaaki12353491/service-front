@@ -12,10 +12,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = (props) => {
   const [ src, setSrc ] = React.useState<string>()
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
-    if (files === null || files.length === 0) {
-      setSrc(undefined)
-      return
-    } 
+    if (files === null || files.length === 0) return
     const reader = new FileReader()
     reader.onload = (e) => {
       const result = e.target?.result

@@ -29,7 +29,7 @@ export const NewCommunity: React.FC = () => {
         data,
         {
           headers: {
-            'Authorization': Storage.Get(Storage.Key.JWT),
+            Authorization: Storage.Get(Storage.Key.JWT),
           },
         }
       )
