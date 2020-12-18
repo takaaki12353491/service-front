@@ -1,26 +1,44 @@
 import React from 'react'
 import styled from 'styled-components'
+import Modal from 'react-modal'
 import { useParams } from 'react-router-dom'
 import { Axios, Type } from '../../../modules'
 import Base from '../../templates/Base'
-import { HeaderImage, IconImage, Text, CVButton } from '../../atoms'
+import { HeaderImage, IconImage, Text, Button, CVButton } from '../../atoms'
+
+Modal.setAppElement("#root")
 
 export const Community: React.FC = () => {
   const { id } = useParams()
+  const [ isOpen, setIsOpen ] = React.useState(false)
   const [ community, setCommunity ] = React.useState<Type.Community>({
     ID: 'community', 
     Owner: { ID: 'owner', Name: 'owner', Email: 'owner@example.com'}, 
     Name: 'community',
     Description: 'description'
   })
-  Axios.Default
+
+  const handleOpenModal = () => {
+    setIsOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsOpen(false)
+  }
+
+  React.useEffect(() => {
+    Axios.Default
     .get(`${Axios.URL.COMMUNITIES}/${id}`)
     .then((res: Axios.Response<Type.Community>) => {
       res.status === 200 && setCommunity(res.data)
     })
     .catch()
+  }, [])
   return (
     <Base>
+      <Modal isOpen={isOpen}>
+        <Button text='close' onClick={handleCloseModal}/>
+      </Modal>
       <Container>
         <HeaderImage/>
         <MiddleContainer>
@@ -32,7 +50,7 @@ export const Community: React.FC = () => {
         </MiddleContainer>
         {community.Description && <Text text={community.Description}/>}
         <MembersContainer>
-          <CVButton text='招待'/>
+          <CVButton text='招待' onClick={handleOpenModal}/>
         </MembersContainer>
       </Container>
     </Base>
