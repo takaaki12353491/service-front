@@ -34,7 +34,7 @@ export const NewCommunity: React.FC = () => {
         }
       )
       .then(res => {
-        res.status === 200 ? alert('success') : alert ('failed')
+        res.status === 200 ? alert('success') : alert('failed')
       })
   })
   return (
