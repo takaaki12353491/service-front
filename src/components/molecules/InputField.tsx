@@ -13,7 +13,7 @@ export const InputField: React.FC<InputFieldProps> = (props) => {
     <Container className={props.className}>
       {props.label && <InputLabel text={props.label}/>}
       {props.children}
-      {props.errMsg && <ErrorText text={props.errMsg}/>}
+      {props.errMsg && <ErrorMsg content={props.errMsg}/>}
     </Container>
   )
 }
@@ -26,7 +26,7 @@ const InputLabel = styled(Label)`
   display: block;
 `
 
-const ErrorText = styled(Text)`
-  margin 0 0 0 0;
+const ErrorMsg = styled(Text)`
+  margin 0;
   color: red;
 `

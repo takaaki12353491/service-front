@@ -26,7 +26,7 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
     <Container>
       {props.label && <FormLabel text={props.label} htmlFor={props.item.name}/>}
       {item}
-      {props.errMsg && <ErrorText text={props.errMsg}/>}
+      {props.errMsg && <ErrorText content={props.errMsg}/>}
     </Container>
   )
 }
