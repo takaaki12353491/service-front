@@ -17,6 +17,7 @@ export default SideMenu
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  position: absolute;
   width: 200px;
   height: 500px;
   background: black;
