@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export interface TextProps {
   content?: string
@@ -7,9 +8,13 @@ export interface TextProps {
 
 export const Text: React.FC<TextProps> = (props) => {
   return (
-    <p {...props}>
+    <P className={props.className}>
       {props.content}
-    </p>
+    </P>
   )
 }
 export default Text
+
+const P = styled.p`
+  margin: 0;
+`
