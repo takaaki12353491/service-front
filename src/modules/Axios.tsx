@@ -24,6 +24,7 @@ export namespace Axios {
   export namespace URL {
     export const SIGNUP = '/signup'
     export const LOGIN = '/login'
+    export const SEARCH = '/search'
     export const COMMUNITIES = '/communities'
   }
 }
