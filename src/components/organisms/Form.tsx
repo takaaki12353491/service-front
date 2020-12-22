@@ -3,22 +3,18 @@ import { CVButton, ButtonProps } from '../atoms'
 import { FormItem, FormItemProps } from '../molecules'
 
 export interface FormProps {
-  submit: () => {}
+  submit: () => void
   items: FormItemProps[]
   button: ButtonProps
   className?: string
 }
 
 export const Form: React.FC<FormProps> = (props) => {
-  const list = []
-  for (const item of props.items) {
-    list.push(
-      <FormItem key={list.length} {...item}/>
-    )
-  }
   return (
     <form onSubmit={props.submit} className={props.className}>
-      {list}
+      {props.items.map(item => {
+        return <FormItem key={item.item.name} {...item}/>
+      })}
       <CVButton {...props.button}/>
     </form>
   )

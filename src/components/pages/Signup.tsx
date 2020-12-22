@@ -5,25 +5,26 @@ import { Axios } from '../../modules'
 import { Name, URL } from '../../consts'
 
 export const Signup: React.FC = () => {
-  type FormData = {
+  type FormType = {
     name: string
     email: string
     password: string
   }
-  const { register, handleSubmit, errors } = useForm<FormData>()
-  const onSubmit = handleSubmit((value) => {
+  const { register, handleSubmit, errors, reset } = useForm<FormType>()
+  const onSubmit = handleSubmit(value => {
     const formData = new FormData()
     formData.append(Name.NAME, value.name)
     formData.append(Name.EMAIL, value.email)
     formData.append(Name.PASSWORD, value.password)
     Axios.MPFD
       .post(Axios.URL.SIGNUP, formData)
-      .then((res) => {
+      .then(res => {
         res.status === 200 ? alert('Your registration is complete') : alert(res.data)
       })
       .catch(() => {
         alert('error')
       })
+    reset()
   })
   return (
     <Auth

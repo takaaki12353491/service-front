@@ -8,15 +8,11 @@ export interface NavigationProps {
 }
 
 export const Navigation: React.FC<NavigationProps> = (props) => {
-  const list = []
-  for (const item of props.items) {
-    list.push(
-      <Link key={item.href} {...item}/>
-    )
-  }
   return(
     <Container className={props.className}>
-      {list}
+      {props.items.map(item => {
+        return <Link key={item.href} {...item}/>
+      })}
     </Container>
   )
 }

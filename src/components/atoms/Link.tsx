@@ -16,9 +16,10 @@ export const Link: React.FC<LinkProps> = (props) => {
 export default Link
 
 const A = styled.a`
-  color: white;
+  color: black;
   text-decoration: none;
+  transition-duration: 0.2;
   &:hover {
-    color: gray;
+    opacity: 0.7;
   }
 `
