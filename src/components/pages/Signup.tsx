@@ -19,12 +19,16 @@ export const Signup: React.FC = () => {
     Axios.MPFD
       .post(Axios.URL.SIGNUP, formData)
       .then(res => {
-        res.status === 200 ? alert('Your registration is complete') : alert(res.data)
+        if (res.status === 200){
+           alert('success')
+           reset()
+        } else {
+          alert('failed')
+        }
       })
       .catch(() => {
         alert('error')
       })
-    reset()
   })
   return (
     <Auth
