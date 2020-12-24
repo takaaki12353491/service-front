@@ -1,11 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset'
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string
-  onClick?: () => void
-  className?: string
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
